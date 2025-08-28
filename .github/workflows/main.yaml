@@ -48,24 +48,38 @@ jobs:
             # Clean up the temporary directory
             sudo rm -rf "$TEMP_CLONE_DIR"
 
+            # --- Navigate to the application directory (CRUCIAL!) ---
+            echo "Navigating to application directory: $DEST_DIR"
+            cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
+
             echo "Attempting to stop any existing Gunicorn process on port 4633..."
             # Find and kill processes listening on port 4633
             sudo fuser -k 4633/tcp || true
 
+            # --- Stop previous API processes ---
+            echo "Attempting to stop any existing Gunicorn process on port 4633..."
+            sudo fuser -k 4633/tcp || true
+
             echo "Attempting to kill existing screen session 'gunicorn_session'..."
-            # Kill the existing screen session if it's running
             screen -S gunicorn_session -X quit || true
 
+            # --- Setup virtual environment & install dependencies ---
+            # Ensure the virtual environment is created within the application directory
             if [ ! -d "venv" ]; then
               echo "Creating virtual environment..."
-              virtualenv venv
+              python3 -m venv venv
             fi
-            
+
             echo "Activating virtual environment..."
             source venv/bin/activate
-            
+
+            echo "Installing/updating Python dependencies from requirements.txt..."
+            pip install -r requirements.txt
+
+            # --- Start new API process ---
             echo "Starting Gunicorn in a detached screen session 'gunicorn_session'..."
-            sudo screen -S gunicorn_session 
+            # Start gunicorn in a detached screen session, executing the command within the virtual env
+            sudo screen -S gunicorn_session
             gunicorn --bind 0.0.0.0:4633 app:application
 
                   
