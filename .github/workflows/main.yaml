@@ -1,0 +1,79 @@
+name: Deploy to EC2
+
+on:
+  push:
+    branches: [ "main" ]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout workflow file (no repo content needed on runner for this strategy)
+        uses: actions/checkout@v3
+
+      - name: Set up AWS credentials
+        uses: aws-actions/configure-aws-credentials@v1
+        with:
+          aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws-region: ${{ secrets.AWS_REGION }}
+
+      - name: Deploy Static Files via EC2 SSH Clone and Move
+        uses: appleboy/ssh-action@master
+        with:
+          host: ${{ secrets.HOST_DNS }}
+          username: ${{ secrets.USERNAME }} 
+          key: ${{ secrets.SSH_PRIVATE_KEY }}
+          script: |
+            REMOTE_REPO_URL="https://github.com/EduardoOsteicoechea/minimal_framework_python"
+            TEMP_CLONE_DIR="/tmp/static_repo_$(date +%s)"
+            DEST_DIR="~/eduardoos"
+
+            echo "Cloning repository to temporary directory: $TEMP_CLONE_DIR"
+            git clone "$REMOTE_REPO_URL" "$TEMP_CLONE_DIR"
+
+            if [ ! -d "$TEMP_CLONE_DIR" ]; then
+              echo "Error: Failed to clone repository $REMOTE_REPO_URL"
+              exit 1
+            fi
+
+            # Copy all content from the cloned repo to the web root
+            echo "Copying all content to $DEST_DIR"
+            sudo cp -r "$TEMP_CLONE_DIR"/* "$DEST_DIR"/
+
+            # Clean up the temporary directory
+            sudo rm -rf "$TEMP_CLONE_DIR"
+
+            # --- STOP PREVIOUS API PROCESSES ---
+            echo "Attempting to stop any existing Gunicorn process on port 4633..."
+            # Find and kill processes listening on port 4633
+            sudo fuser -k 4633/tcp || true
+
+            echo "Attempting to kill existing screen session 'gunicorn_session'..."
+            # Kill the existing screen session if it's running
+            screen -S gunicorn_session -X quit || true
+
+            if [ ! -d "venv" ]; then
+              echo "Creating virtual environment..."
+              virtualenv venv
+            fi
+            
+            echo "Activating virtual environment..."
+            source venv/bin/activate
+            
+            echo "Starting Gunicorn in a detached screen session 'gunicorn_session'..."
+            sudo screen -S gunicorn_session 
+            gunicorn --bind 0.0.0.0:4633 app:application
+
+                  
+            sudo rm -rf /var/cache/nginx/*
+                  
+            echo "Restarting Nginx..."
+            sudo systemctl restart nginx
+            echo "Reloading Nginx configuration..."
+            sudo systemctl reload nginx 
+
+      - name: Wait for deployment
+        run: |
+          echo "Waiting 5 seconds for Nginx to settle..."
+          sleep 5
