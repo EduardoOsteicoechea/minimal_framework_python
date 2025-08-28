@@ -1,28 +1,18 @@
 # app.py
 
+from pages import page
+
 def application(environ, start_response):
-    """
-    A bare-bones WSGI application.
-    """
     status = '200 OK'
     headers = [('Content-type', 'text/html')]
-
     start_response(status, headers)
-
-    response_body = """
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="static/style.css">
-  <title>Document</title>
-</head>
-<body>
-    Change from local. Thanks lord. Check aaaaaaaaaaaaaaaaaaaaa
-</body>
-
-"""
     
+    page_instance = page.Page()
+    page_instance.set_title("My Python-Generated Page")
+    page_instance.add_css(["main_styles"])
+    page_instance.set_content_block("main_content", "<h1>Welcome!</h1><p>This page was created with Python.</p>")
+    page_instance.add_js_bottom(["main_script"], is_module=True)
+
+    response_body = page_instance.html()
+        
     return [response_body.encode('utf-8')]
