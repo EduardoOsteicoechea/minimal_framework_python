@@ -10,6 +10,6 @@ def application(environ, start_response):
     start_response(status, headers)
 
     # The body of the response, returned as an iterable of byte strings.
-    response_body = "Change from local. Thanks lord."
+    response_body = "Change from local. Thanks lord. Check"
     
     return [response_body.encode('utf-8')]
