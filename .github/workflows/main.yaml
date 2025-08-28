@@ -44,7 +44,6 @@ jobs:
             # Clean up the temporary directory
             sudo rm -rf "$TEMP_CLONE_DIR"
 
-            # --- STOP PREVIOUS API PROCESSES ---
             echo "Attempting to stop any existing Gunicorn process on port 4633..."
             # Find and kill processes listening on port 4633
             sudo fuser -k 4633/tcp || true
