@@ -27,7 +27,11 @@ jobs:
           script: |
             REMOTE_REPO_URL="https://github.com/EduardoOsteicoechea/minimal_framework_python"
             TEMP_CLONE_DIR="/tmp/static_repo_$(date +%s)"
-            DEST_DIR="~/eduardoos"
+            DEST_DIR="/var/www/html"
+
+            sudo mkdir -p "$DEST_DIR"
+            sudo chown -R ${{ secrets.USERNAME }}:${{ secrets.USERNAME }} "$DEST_DIR"
+            sudo chmod -R 755 "$DEST_DIR"
 
             echo "Cloning repository to temporary directory: $TEMP_CLONE_DIR"
             git clone "$REMOTE_REPO_URL" "$TEMP_CLONE_DIR"
