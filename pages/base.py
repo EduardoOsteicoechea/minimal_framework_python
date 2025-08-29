@@ -53,15 +53,15 @@ class PageBase:
     def set_title(self, name: str):
         self.title = f'<title>{name}</title>'
 
-    def add_css(self, names: list):
+    def add_css(self, names: list = []):
         if names:
             self.css_files.join(self._css_files_markup(names))
 
-    def add_js_top(self, names: list, is_module: bool = False):
+    def add_js_top(self, names: list = [], is_module: bool = False):
         if names:
             self.js_top_files.join(self._js_files_markup(names, is_module))
 
-    def add_js_bottom(self, names: list, is_module: bool = False):
+    def add_js_bottom(self, names: list = [], is_module: bool = False):
         if names:
             self.js_bottom_files.join(self._js_files_markup(names, is_module))
 
