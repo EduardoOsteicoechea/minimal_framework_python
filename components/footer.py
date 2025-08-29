@@ -1,12 +1,12 @@
 # components/header.py
 
-class PageFooter:
+class PageHeader:
     def __init__(self):
         pass
 
     def html(self):
         return """
             <div>
-              This is the footer
+              This is the header
             </div>
         """

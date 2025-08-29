@@ -2,6 +2,7 @@
 
 from pages.base import PageBase
 from components.header import PageHeader
+from components.footer import PageFooter
 
 
 class HomePage(PageBase):
