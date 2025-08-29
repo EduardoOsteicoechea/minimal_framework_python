@@ -35,6 +35,7 @@ class PageBase:
         self.main_content = ""
         self.aside = ""
         self.footer = ""
+        self.components = []
 
     def _css_files_markup(self, names_without_extension: list):
         """Generates <link> tags for CSS files."""
@@ -77,6 +78,8 @@ class PageBase:
         setattr(self, block_name, markup)
 
     def html(self):
+        for c in self.components:
+            self.extractComponent(c)
         self.add_css()
         self.add_js_top()
         self.add_js_bottom()        
@@ -102,7 +105,14 @@ class PageBase:
     
     def addComponent(self, component: 'ComponentBase'):
         if component:
+            self.components.append(component)
+            # self.add_css(component.css_file_names)
+            # self.add_js_bottom(component.js_file_names)
+            # # self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
+            # self.main_content += component.content
+            
+    def extractComponent(self, component: 'ComponentBase'):
+        if component:
             self.add_css(component.css_file_names)
             self.add_js_bottom(component.js_file_names)
-            # self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
             self.main_content += component.content
