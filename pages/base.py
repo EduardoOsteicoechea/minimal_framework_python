@@ -70,7 +70,6 @@ class PageBase:
         if css_files:
             self.add_css(css_files)
         if js_files:
-            # Assuming all block-specific JS goes to the bottom
             self.add_js_bottom(js_files)
         setattr(self, block_name, markup)
 

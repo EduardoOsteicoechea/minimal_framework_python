@@ -1,6 +1,6 @@
 from enum import Enum
 
-class Containing(Enum):
+class HTMLContaining(Enum):
     """
     Enumeration for HTML tags that typically contain other elements or text.
     """
@@ -27,7 +27,7 @@ class Containing(Enum):
     MAIN = "main"
 
 
-class Simple(Enum):
+class HTMLSimple(Enum):
     """
     Enumeration for HTML tags that are typically self-closing (void elements).
     """
@@ -37,7 +37,7 @@ class Simple(Enum):
 
 
 class HTMLElements:
-    def __init__(self, tag_type: Containing | Simple):
+    def __init__(self, tag_type: HTMLContaining | HTMLSimple):
       self.tag_type = tag_type
         
     def _generate_classes(self, classes: list = []) -> str:
@@ -71,8 +71,8 @@ class HTMLElements:
         class_str = self._generate_classes(classes)
         id_str = f' id="{id}"' if id else ""
         attr_str = self._generate_attributes(attributes)
-        is_simple = isinstance(self.tag_type, Simple)
+        is_simple = isinstance(self.tag_type, HTMLSimple)
         if is_simple:
-            return f"<{tag}{id_str}{class_str}{attr_str} />"
+            return f"<{tag}{id_str}{class_str}{attr_str}>"
         else:
             return f"<{tag}{id_str}{class_str}{attr_str}>{content}</{tag}>"
