@@ -13,7 +13,7 @@ def application(environ, start_response):
     # page_instance.add_css(["main_styles"])
     # page_instance.set_content_block("main_content", "<h1>Welcome!</h1><p>This page was created with Python.</p>")
     # page_instance.add_js_bottom(["main_script"], is_module=True)
-      page_instance = home.Page()
+      page_instance = home.HomePage()
       response_body = page_instance.html()
       return [response_body.encode('utf-8')]
     except Exception as e:

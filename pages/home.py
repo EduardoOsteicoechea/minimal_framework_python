@@ -3,8 +3,9 @@
 from page import Page
 from components import PageHeader
 
-class Page(Page):
+class HomePage(Page):
   def __init__(self):
+    super().__init__()
     self.header = PageHeader().html
     self.title("eduardoos")
   
