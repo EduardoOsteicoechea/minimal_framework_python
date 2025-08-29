@@ -1,3 +1,5 @@
+# pages/page.py
+
 class Page:
     _top = """
     <!DOCTYPE html>
