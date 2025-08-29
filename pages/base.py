@@ -102,7 +102,7 @@ class PageBase:
     
     def addComponent(self, component: 'ComponentBase'):
         if component:
-            self.css_file_names.extend(component.css_file_names)
-            self.js_file_names.extend(component.js_file_names)
-            self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
+            self.add_css(component.css_file_names)
+            self.add_js(component.js_file_names)
+            # self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
             self.main_content += component.content
