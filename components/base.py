@@ -12,7 +12,7 @@ class ComponentBase:
         classes: list = [],
         attributes: dict = {},
     ):
-        self._html_generator = HTMLElements()
+        self._html_generator = HTMLElements(tag_type)
         self.tag_type = tag_type
         self.id = id
         self.idsHierarchy = IdsHierarchy(self.id)
