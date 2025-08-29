@@ -1,6 +1,6 @@
-# pages/page.py
+# pages/_.py
 
-class Page:
+class PageBase:
     _top = """
     <!DOCTYPE html>
     <html lang="en">
