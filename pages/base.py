@@ -2,6 +2,7 @@
 
 from components.base import ComponentBase
 
+
 class PageBase:
     _top = """
     <!DOCTYPE html>
@@ -10,7 +11,8 @@ class PageBase:
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
-    <link rel="stylesheet" href="static/style.css">
+    <link rel="stylesheet" href="static/global.css">
+    <link rel="stylesheet" href="static/global.js">
     """
     _body_tag_open = """
     </head>

@@ -28,7 +28,7 @@ class ComponentBase:
             self.css_file_names.extend(component.css_file_names)
             self.js_file_names.extend(component.js_file_names)
             self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
-            self.main_content += component.content
+            # self.main_content += component.content
 
     def html(self) -> str:
         """

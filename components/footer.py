@@ -3,6 +3,7 @@
 from .htmlTags import HTMLContaining
 from .base import ComponentBase
 
+
 class PageFooter(ComponentBase):
     def __init__(self):
         super().__init__(
