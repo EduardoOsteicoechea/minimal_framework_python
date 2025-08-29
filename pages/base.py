@@ -96,6 +96,4 @@ class PageBase:
             self.js_bottom_files,
             self._bottom
         ]        
-        markup = ""
-        markup.join(parts)
-        return markup
+        return "".join(parts)
