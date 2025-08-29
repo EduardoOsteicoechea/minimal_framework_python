@@ -77,7 +77,7 @@ class PageBase:
     def html(self):
         self.add_css()
         self.add_js_top()
-        self.add_js_bottom()
+        self.add_js_bottom()        
         parts = [
             self._top,
             self.title,
@@ -95,5 +95,7 @@ class PageBase:
             self.footer,
             self.js_bottom_files,
             self._bottom
-        ]
-        return "".join(parts)
+        ]        
+        markup = ""
+        markup.join(parts)
+        return markup
