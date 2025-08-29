@@ -1,6 +1,6 @@
 # components/base.py
 
-from htmlTags import HTMLElements, HTMLContaining, HTMLSimple
+from .htmlTags import HTMLElements, HTMLContaining, HTMLSimple
 
 
 class ComponentBase:
