@@ -12,8 +12,8 @@ class ComponentBase:
         classes: list = [],
         attributes: dict = {},
     ):
-        self._html_generator = HTMLElements(tag_type)
         self.tag_type = tag_type
+        self._html_generator = HTMLElements(self.tag_type)
         self.id = id
         self.idsHierarchy = IdsHierarchy(self.id)
         self.content = content
@@ -34,9 +34,8 @@ class ComponentBase:
         Generates the HTML markup for the component.
         """
         return self._html_generator.generate(
-            tag_type=self.tag_type,
-            id=self.id,
             content=self.content,
+            id=self.id,
             classes=self.classes,
             attributes=self.attributes
         )
