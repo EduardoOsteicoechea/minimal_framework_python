@@ -1,6 +1,6 @@
 # components/footer.py
 
-from htmlTags import HTMLContaining, HTMLSimple
+from htmlTags import HTMLContaining
 from base import ComponentBase
 
 class PageFooter(ComponentBase):
