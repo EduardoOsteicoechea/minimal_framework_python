@@ -1,7 +1,7 @@
 # pages/home.py
 
-from _ import PageBase
-from components import PageHeader
+from pages.base import PageBase
+from components.header import PageHeader
 
 class Page(PageBase):
     def __init__(self):

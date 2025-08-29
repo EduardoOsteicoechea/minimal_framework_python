@@ -1,4 +1,4 @@
-# pages/_.py
+# pages/base.py
 
 class PageBase:
     _top = """
