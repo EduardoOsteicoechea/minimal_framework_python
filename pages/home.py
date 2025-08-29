@@ -9,5 +9,5 @@ class HomePage(PageBase):
     def __init__(self):
         super().__init__()
         self.header = PageHeader().html() 
-        self.footer = PageFooter().html()
+        self.addComponent(PageFooter())
         self.set_title("eduardoos")

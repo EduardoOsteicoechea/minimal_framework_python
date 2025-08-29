@@ -1,5 +1,7 @@
 # pages/base.py
 
+from components.base import ComponentBase
+
 class PageBase:
     _top = """
     <!DOCTYPE html>
@@ -96,3 +98,10 @@ class PageBase:
             self._bottom
         ]        
         return "".join(parts)
+    
+    def addComponent(self, component: 'ComponentBase'):
+        if component:
+            self.css_file_names.extend(component.css_file_names)
+            self.js_file_names.extend(component.js_file_names)
+            self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
+            self.main_content += component.content

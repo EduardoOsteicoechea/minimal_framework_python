@@ -10,6 +10,6 @@ class PageFooter(ComponentBase):
             self.__class__.__name__, 
             "This is the footer",
             ["footer"]
-            )
+        )
         self.css_file_names.extend(["footer"])
         self.js_file_names.extend(["footer"])
