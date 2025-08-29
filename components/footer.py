@@ -13,3 +13,4 @@ class PageFooter(ComponentBase):
             )
         self.css_file_names.extend(["footer"])
         self.js_file_names.extend(["footer"])
+        self.addComponent(PageFooter())
