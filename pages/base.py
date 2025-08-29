@@ -20,9 +20,9 @@ class PageBase:
 
     def __init__(self):
         self.title = ""
-        self.css_files = []
-        self.js_top_files = []
-        self.js_bottom_files = []
+        self.css_files = ""
+        self.js_top_files = ""
+        self.js_bottom_files = ""
         self.modal = ""
         self.assistant = ""
         self.skip_to_content = ""
@@ -55,16 +55,15 @@ class PageBase:
 
     def add_css(self, names: list):
         if names:
-            self.css_files.extend(self._css_files_markup(names))
+            self.css_files.join(self._css_files_markup(names))
 
     def add_js_top(self, names: list, is_module: bool = False):
         if names:
-            self.js_top_files.extend(self._js_files_markup(names, is_module))
+            self.js_top_files.join(self._js_files_markup(names, is_module))
 
     def add_js_bottom(self, names: list, is_module: bool = False):
         if names:
-            self.js_bottom_files.extend(
-                self._js_files_markup(names, is_module))
+            self.js_bottom_files.join(self._js_files_markup(names, is_module))
 
     def set_content_block(self, block_name: str, markup: str, css_files: list = [], js_files: list = []):
         """Sets content and adds associated files for a specific block."""
@@ -76,11 +75,14 @@ class PageBase:
         setattr(self, block_name, markup)
 
     def html(self):
+        self.add_css()
+        self.add_js_top()
+        self.add_js_bottom()
         parts = [
             self._top,
             self.title,
-            "".join(self.css_files),
-            "".join(self.js_top_files),
+            self.css_files,
+            self.js_top_files,
             self._body_tag_open,
             self.modal,
             self.assistant,
@@ -91,7 +93,7 @@ class PageBase:
             self.main_content,
             self.aside,
             self.footer,
-            "".join(self.js_bottom_files),
+            self.js_bottom_files,
             self._bottom
         ]
         return "".join(parts)
