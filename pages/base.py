@@ -12,7 +12,7 @@ class PageBase:
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" type="image/x-icon" href="static/favicon.ico">
     <link rel="stylesheet" href="static/global.css">
-    <link rel="stylesheet" href="static/global.js">
+    <script src="static/global.js"></script>
     """
     _body_tag_open = """
     </head>
@@ -25,9 +25,9 @@ class PageBase:
 
     def __init__(self):
         self.title = ""
-        self.css_files = ""
-        self.js_top_files = ""
-        self.js_bottom_files = ""
+        self.css_files = []
+        self.js_top_files = []
+        self.js_bottom_files = []
         self.modal = ""
         self.assistant = ""
         self.skip_to_content = ""
@@ -51,7 +51,7 @@ class PageBase:
         """Generates <script> tags for JavaScript files."""
         module_attr = ' type="module"' if is_module else ''
         scripts = [
-            f'<script{module_attr} src="{name}.js"></script>'
+            f'<script{module_attr} src="static/{name}.js"></script>'
             for name in names_without_extension
         ]
         return "".join(scripts)
@@ -61,15 +61,15 @@ class PageBase:
 
     def add_css(self, names: list = []):
         if names:
-            self.css_files.join(self._css_files_markup(names))
+            self.css_files.extend(names)
 
-    def add_js_top(self, names: list = [], is_module: bool = False):
+    def add_js_top(self, names: list = []):
         if names:
-            self.js_top_files.join(self._js_files_markup(names, is_module))
+            self.js_top_files.extend(names)
 
-    def add_js_bottom(self, names: list = [], is_module: bool = False):
+    def add_js_bottom(self, names: list = []):
         if names:
-            self.js_bottom_files.join(self._js_files_markup(names, is_module))
+            self.js_bottom_files.extend(names)
 
     def set_content_block(self, block_name: str, markup: str, css_files: list = [], js_files: list = []):
         """Sets content and adds associated files for a specific block."""
@@ -81,15 +81,12 @@ class PageBase:
 
     def html(self):
         for c in self.components:
-            self.extractComponent(c)
-        self.add_css()
-        self.add_js_top()
-        self.add_js_bottom()        
+            self.extractComponent(c)     
         parts = [
             self._top,
             self.title,
-            self.css_files,
-            self.js_top_files,
+            self._css_files_markup(self.css_files),
+            self._js_files_markup(self.js_top_files),
             self._body_tag_open,
             self.modal,
             self.assistant,
@@ -100,7 +97,7 @@ class PageBase:
             self.main_content,
             self.aside,
             self.footer,
-            self.js_bottom_files,
+            self._js_files_markup(self.js_bottom_files),
             self._bottom
         ]        
         return "".join(parts)

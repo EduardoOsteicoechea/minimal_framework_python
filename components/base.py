@@ -40,7 +40,7 @@ class ComponentBase:
     def generate(self) -> str:
         tag = self.tag_type.value
         class_str = self._generate_classes(self.classes)
-        id_str = f' id="{self.id}"' if self.id else ""
+        id_str = f' id="{self.idsHierarchy.parentId}"' if self.idsHierarchy.parentId else ""
         attr_str = self._generate_attributes(self.attributes)
         is_simple = isinstance(self.tag_type, HTMLSimple)
         if is_simple:
@@ -48,10 +48,11 @@ class ComponentBase:
         else:
             return f"<{tag}{id_str}{class_str}{attr_str}>{self.content}</{tag}>"
 
-    def addComponent(self, component: 'ComponentBase'):
+    def addComponent(self, parentComponent: 'ComponentBase', component: 'ComponentBase'):
         if component:
             self.css_file_names.extend(component.css_file_names)
             self.js_file_names.extend(component.js_file_names)
+            component.idsHierarchy.parentId = parentComponent.idsHierarchy.parentId + "_" + component.idsHierarchy.parentId
             self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
             self.content += component.generate()
 

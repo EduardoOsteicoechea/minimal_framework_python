@@ -1,0 +1,1 @@
+setTimeout(()=>{document.getElementById('ImageBounded_personal_photo').setAttribute('src','static/images/personal_photo_white_head_600x600.jpg')},100)

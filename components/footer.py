@@ -14,6 +14,6 @@ class PageFooter(ComponentBase):
         self.css_file_names.extend(["footer"])
         self.js_file_names.extend(["footer"])
         self.addComponent(
-            ComponentBase(HTMLContaining.P, "footer_p","footer_p",{},
+            self,ComponentBase(HTMLContaining.P, "footer_p","footer_p",{},
             "this is a parag in the footer",
         ))

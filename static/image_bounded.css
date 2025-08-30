@@ -1,0 +1,7 @@
+.image_bounded{
+    display: flex;
+    align-items: center;
+    justify-items: center;
+    overflow: hidden;
+    background: var(--cf);
+}
