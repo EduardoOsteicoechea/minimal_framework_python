@@ -10,6 +10,7 @@ class HTMLContaining(Enum):
     H2 = "h2"
     H3 = "h3"
     P = "p"
+    OL = "ol"
     UL = "ul"
     LI = "li"
     SPAN = "span"

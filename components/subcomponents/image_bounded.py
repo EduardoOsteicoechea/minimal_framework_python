@@ -17,7 +17,7 @@ class ImageBounded(ComponentBase):
             ComponentBase(HTMLSimple.IMG, "personal_photo","header_personal_photo",{
                 #"src":"static/images/personal_photo_white_head_600x600.jpg", 
                 "alt":"",
-                "width":"100%"
+                "height":"100%"
             },
             "this is a parag in the header",
         ))

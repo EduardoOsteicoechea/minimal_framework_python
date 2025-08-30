@@ -6,5 +6,7 @@
     overflow: hidden;
     background: var(--cf);
     height:250px;
-
+}
+.image_bounded > * {
+    height: 100%;
 }

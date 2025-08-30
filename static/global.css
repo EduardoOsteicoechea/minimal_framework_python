@@ -46,7 +46,7 @@ body{
 	margin:0 auto;
 	padding:0;
 	box-sizing:border-box;
-	max-width:720px;
+	max-width:600px;
     background: var(--cb);
     display: grid;
     grid-template-columns: 0px 100px 15px auto 15px;
