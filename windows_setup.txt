@@ -1,0 +1,22 @@
+    EXECUTE IN ORDER TO RUN ON WINDOWS (on linux we'll use guicorn)
+
+    CREATE THE LOCAL VIRTUAL ENVIRONMENT
+python -m venv venv
+
+    ACTIVATE THE LOCAL VIRTUAL ENVIRONMENT
+venv\Scripts\activate
+
+    INSTALL THE SERVER IN THE LOCAL VIRTUAL ENVIRONMENT
+pip install waitress
+
+    INSTALL PROJECTS REQUIREMENTS ON THE LOCAL VIRTUAL ENVIRONMENT
+pip install -r requirements.txt
+
+    RUN THE SERVER
+waitress-serve --host=0.0.0.0 --port=8080 app:application
+
+    WHEN DONE, OR TO RESET, SHUT DOWN THE SERVER
+ctrl + c
+
+    WHEN DONE, OR TO RESET, EXIT THE LOCAL VIRTUAL ENVIRONMENT 
+deactivate

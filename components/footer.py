@@ -9,7 +9,7 @@ class PageFooter(ComponentBase):
         super().__init__(
             HTMLContaining.DIV,
             self.__class__.__name__, 
-            "This is the footer",
+            "This is the footer22222222",
             ["footer"]
         )
         self.css_file_names.extend(["footer"])
