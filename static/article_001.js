@@ -1,6 +1,6 @@
 const article_body = document.getElementById("PageArticle001_ArticleBody001");
 
-fetch("https://eduardoos.com/static/en_la_disciplina_e_instruccion_del_senor.json")
+fetch("https://eduardoos.com/static/json/en_la_disciplina_e_instruccion_del_senor.json")
     .then(response => {
         // Check if the response was successful
         if (!response.ok) {
