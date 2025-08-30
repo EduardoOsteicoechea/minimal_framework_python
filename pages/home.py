@@ -2,7 +2,6 @@
 
 from pages.base import PageBase
 from components.header import PageHeader
-from components.footer import PageFooter
 from components.article_001 import PageArticle001
 
 

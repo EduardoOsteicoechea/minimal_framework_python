@@ -50,6 +50,6 @@ body{
     background: var(--cb);
     display: grid;
     grid-template-columns: 0px 100px 15px auto 15px;
-    grid-template-rows: 0px 250 15px auto 15px;
+    grid-template-rows: 10px 250 15px auto 15px;
     /* border: var(--b1); */
 }

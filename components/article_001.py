@@ -2,7 +2,7 @@
 
 from .htmlTags import HTMLContaining, HTMLSimple
 from .base import ComponentBase
-from components.subcomponents.article_title import ArticleTitle001
+from components.subcomponents.article_title_001 import ArticleTitle001
 
 
 class PageArticle001(ComponentBase):
@@ -10,7 +10,7 @@ class PageArticle001(ComponentBase):
         super().__init__(
             HTMLContaining.DIV,
             self.__class__.__name__,
-            ["header"]
+            ["article_001"]
         )
         self.css_file_names.extend(["article_001"])
         self.js_file_names.extend(["article_001"])
