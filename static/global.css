@@ -49,7 +49,7 @@ body{
 	max-width:720px;
     background: var(--cb);
     display: grid;
-    grid-template-columns: 0px 85px 10px auto 15px;
-    grid-template-rows: 10px auto 15px;
+    grid-template-columns: 0px 95px 15px auto 15px;
+    grid-template-rows: 0px auto 15px;
     /* border: var(--b1); */
 }
