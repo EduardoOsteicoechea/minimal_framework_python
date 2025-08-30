@@ -4,7 +4,7 @@
     justify-items: center;
     overflow: hidden;
     background: var(--cf);
-    border-bottom-right-radius:10px;
+    /* border-bottom-right-radius:10px; */
     height:230px;
     /* border: var(--b1); */
 
