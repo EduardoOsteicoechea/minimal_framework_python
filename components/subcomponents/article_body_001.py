@@ -15,3 +15,35 @@ class ArticleBody001(ComponentBase):
             self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
             "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
         ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.P, "article_body_001","article_body_001",{},
+            "Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo Desarrollando Una auténtica relación con Cristo",
+        ))
