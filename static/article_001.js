@@ -29,5 +29,5 @@ fetch("https://eduardoos.com/static/json/en_la_disciplina_e_instruccion_del_seno
     .catch(error => {
         // Handle any errors that occurred during the fetch
         console.error('There was a problem with the fetch operation:', error);
-        article_body.innerHTML = `<p>Error loading content.</p>`;
+        article_body.innerHTML = `<p>Error loading content.</p>`; 
     });
