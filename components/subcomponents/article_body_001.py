@@ -35,7 +35,7 @@ class ArticleBody001(ComponentBase):
                                 self,ComponentBase(HTMLContaining.P, "article_body_001_subidea","article_body_001",{},
                                 subidea.content,
                             ))
-                        elif subidea.type == "passage_list":                      
+                        elif subidea.type == "passage_list":                       
                             self.addComponent(self,PassageList001(subidea.content))
                         else:                      
                             self.addComponent(
