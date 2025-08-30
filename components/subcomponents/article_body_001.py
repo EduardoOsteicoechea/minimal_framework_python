@@ -17,8 +17,8 @@ class ArticleBody001(ComponentBase):
         )
         file_path = os.path.join(
             os.path.dirname(__file__),
-            # "..\\..\\database\\articles\\en_la_disciplina_e_instruccion_del_senor.json"
-            "../../database/articles/en_la_disciplina_e_instruccion_del_senor.json"
+            "..\\..\\database\\articles\\en_la_disciplina_e_instruccion_del_senor.json"
+            # "../../database/articles/en_la_disciplina_e_instruccion_del_senor.json"
         )
         try:
             with open(file_path, "r", encoding="utf-8") as file:
