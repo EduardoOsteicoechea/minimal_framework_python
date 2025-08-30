@@ -53,25 +53,36 @@ class HTMLElements:
         attr_list = [f'{key}="{value}"' for key, value in attributes.items()]
         return " " + " ".join(attr_list)
 
-    def generate(self, content: str = "", id: str = "", classes: list = [], attributes: dict = {}) -> str:
-        """
-        Generates a complete HTML element based on the tag type and attributes.
-
-        Args:
-            tag_type: An enum member from `Containing` or `Simple`.
-            content: The inner HTML content for containing tags.
-            id: The id attribute value.
-            classes: A list of class names.
-            attributes: A dictionary of additional attributes (e.g., {'data-key': 'value'}).
-
-        Returns:
-            The HTML element as a string.
-        """
+    def generate(
+        self,
+        content: str = "", 
+        id: str = "", 
+        classes: list = [], 
+        attributes: dict = {}
+    ) -> str:
         tag = self.tag_type.value
         class_str = self._generate_classes(classes)
         id_str = f' id="{id}"' if id else ""
         attr_str = self._generate_attributes(attributes)
         is_simple = isinstance(self.tag_type, HTMLSimple)
+        if is_simple:
+            return f"<{tag}{id_str}{class_str}{attr_str}>"
+        else:
+            return f"<{tag}{id_str}{class_str}{attr_str}>{content}</{tag}>"
+
+    def generate_subcomponent(
+        self, 
+        tag_type: HTMLContaining | HTMLSimple, 
+        content: str = "", 
+        id: str = "", 
+        classes: list = [], 
+        attributes: dict = {}
+    ) -> str:
+        tag = tag_type.value
+        class_str = self._generate_classes(classes)
+        id_str = f' id="{id}"' if id else ""
+        attr_str = self._generate_attributes(attributes)
+        is_simple = isinstance(tag_type, HTMLSimple)
         if is_simple:
             return f"<{tag}{id_str}{class_str}{attr_str}>"
         else:

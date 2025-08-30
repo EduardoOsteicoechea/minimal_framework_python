@@ -1,6 +1,6 @@
 # components/base.py
 
-from .htmlTags import HTMLElements, HTMLContaining, HTMLSimple
+from .htmlTags import HTMLContaining, HTMLSimple
 
 
 class ComponentBase:
@@ -8,12 +8,11 @@ class ComponentBase:
         self,
         tag_type: HTMLContaining | HTMLSimple,
         id: str = "",
-        content: str = "",
         classes: list = [],
         attributes: dict = {},
+        content: str = "",
     ):
         self.tag_type = tag_type
-        self._html_generator = HTMLElements(self.tag_type)
         self.id = id
         self.idsHierarchy = IdsHierarchy(self.id)
         self.content = content
@@ -22,24 +21,45 @@ class ComponentBase:
         self.css_file_names = []
         self.js_file_names = []
         self.subcomponents = []
+            
+    def _generate_classes(self, classes: list | str = "") -> str:
+        """Generates a space-separated class attribute string."""
+        if isinstance(classes, list):
+            return f' class="{" ".join(classes)}"'
+        elif isinstance(classes, str) and classes:
+            return f' class="{classes}"'
+        return ""
+            
+    def _generate_attributes(self, attributes: dict = {}) -> str:
+        """Generates an attribute string from a dictionary."""
+        if not attributes:
+            return ""
+        attr_list = [f'{key}="{value}"' for key, value in attributes.items()]
+        return " " + " ".join(attr_list)
+
+    def generate(self) -> str:
+        tag = self.tag_type.value
+        class_str = self._generate_classes(self.classes)
+        id_str = f' id="{self.id}"' if self.id else ""
+        attr_str = self._generate_attributes(self.attributes)
+        is_simple = isinstance(self.tag_type, HTMLSimple)
+        if is_simple:
+            return f"<{tag}{id_str}{class_str}{attr_str}>"
+        else:
+            return f"<{tag}{id_str}{class_str}{attr_str}>{self.content}</{tag}>"
 
     def addComponent(self, component: 'ComponentBase'):
         if component:
             self.css_file_names.extend(component.css_file_names)
             self.js_file_names.extend(component.js_file_names)
             self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
-            # self.main_content += component.content
+            self.content += component.generate()
 
     def html(self) -> str:
         """
         Generates the HTML markup for the component.
         """
-        return self._html_generator.generate(
-            content=self.content,
-            id=self.id,
-            classes=self.classes,
-            attributes=self.attributes
-        )
+        return self.generate()
 
 class IdsHierarchy:
     def __init__(

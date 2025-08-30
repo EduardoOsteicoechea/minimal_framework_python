@@ -108,13 +108,9 @@ class PageBase:
     def addComponent(self, component: 'ComponentBase'):
         if component:
             self.components.append(component)
-            # self.add_css(component.css_file_names)
-            # self.add_js_bottom(component.js_file_names)
-            # # self.idsHierarchy.extractSubcomponentIds(component.idsHierarchy)
-            # self.main_content += component.content
             
     def extractComponent(self, component: 'ComponentBase'):
         if component:
             self.add_css(component.css_file_names)
             self.add_js_bottom(component.js_file_names)
-            self.main_content += component.content
+            self.main_content += component.generate()

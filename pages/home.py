@@ -8,6 +8,6 @@ from components.footer import PageFooter
 class HomePage(PageBase):
     def __init__(self):
         super().__init__()
-        self.header = PageHeader().html() 
+        self.addComponent(PageHeader())
         self.addComponent(PageFooter())
         self.set_title("eduardoos")
