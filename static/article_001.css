@@ -5,6 +5,12 @@
 
 }
 
-.article_title_001{
-    margin-top: 10px;
+.article_title_001{   
+    grid-row: 2;
+    grid-column: 4;
+}
+
+.article_body_001{    
+    grid-row: 4;
+    grid-column: 4;
 }
