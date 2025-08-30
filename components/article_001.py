@@ -1,0 +1,17 @@
+# components/header.py
+
+from .htmlTags import HTMLContaining, HTMLSimple
+from .base import ComponentBase
+from components.subcomponents.article_title import ArticleTitle001
+
+
+class PageArticle001(ComponentBase):
+    def __init__(self):
+        super().__init__(
+            HTMLContaining.DIV,
+            self.__class__.__name__,
+            ["header"]
+        )
+        self.css_file_names.extend(["article_001"])
+        self.js_file_names.extend(["article_001"])
+        self.addComponent(self,ArticleTitle001())
