@@ -52,10 +52,6 @@ jobs:
             echo "Navigating to application directory: $DEST_DIR"
             cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
-            #echo "Attempting to stop any existing Gunicorn process on port 4633..."
-            # Find and kill processes listening on port 4633
-            #sudo fuser -k 4633/tcp || true
-
             # --- Stop previous API processes ---
             echo "Attempting to stop any existing Gunicorn process on port 4633..."
             sudo fuser -k 4633/tcp || true

@@ -1,3 +1,26 @@
+REMOTE_REPO_URL="https://github.com/EduardoOsteicoechea/minimal_framework_python"
+
+TEMP_CLONE_DIR="/tmp/static_repo_$(date +%s)"
+
+DEST_DIR="/var/www/html"
+
+sudo mkdir -p "$DEST_DIR"
+
+sudo chown -R ${{ secrets.USERNAME }}:${{ secrets.USERNAME }} "$DEST_DIR"
+
+sudo chmod -R 755 "$DEST_DIR"
+
+git clone "$REMOTE_REPO_URL" "$TEMP_CLONE_DIR"
+
+if [ ! -d "$TEMP_CLONE_DIR" ]; then
+    exit 1
+fi
+
+sudo cp -r "$TEMP_CLONE_DIR"/* "$DEST_DIR"/
+
+sudo rm -rf "$TEMP_CLONE_DIR"
+
+cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
 sudo fuser -k 4633/tcp || true
 
@@ -14,3 +37,9 @@ pip install -r requirements.txt
 sudo screen -S gunicorn_session
 
 gunicorn --bind 0.0.0.0:4633 app:application
+
+sudo rm -rf /var/cache/nginx/*
+
+sudo systemctl restart nginx
+
+sudo systemctl reload nginx
