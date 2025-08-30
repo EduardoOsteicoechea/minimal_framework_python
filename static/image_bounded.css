@@ -4,8 +4,9 @@
     justify-items: center;
     overflow: hidden;
     background: var(--cf);
-    border-radius:5px;
-    height:250px;
+    border-top-right-radius:5px;
+    border-bottom-right-radius:5px;
+    height:200px;
     /* border: var(--b1); */
 
 }
