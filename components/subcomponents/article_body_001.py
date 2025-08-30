@@ -27,7 +27,7 @@ class ArticleBody001(ComponentBase):
                 for idea in article_instance.ideas:
                     self.addComponent(
                         self,ComponentBase(HTMLContaining.H2, "article_body_heading","article_body_heading",{},
-                        idea.heading,
+                        idea.heading, 
                     ))
                     for subidea in idea.subideas:
                         if subidea.type == "regular" or subidea.type == None:                      
