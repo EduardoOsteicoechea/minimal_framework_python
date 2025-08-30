@@ -16,9 +16,9 @@ class ImageBounded(ComponentBase):
         self.addComponent(self,
             ComponentBase(HTMLSimple.IMG, "personal_photo","header_personal_photo",{
                 #"src":"static/images/personal_photo_white_head_600x600.jpg", 
-                "width":"200%",
+                "width":"300%",
                 "alt":"",
-                "style":"right:15px;"
+                # "style":"right:15px;"
             },
             "this is a parag in the header",
         ))
