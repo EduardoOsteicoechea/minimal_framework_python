@@ -19,11 +19,11 @@ class ArticleBody001(ComponentBase):
             self,ComponentBase(HTMLContaining.BUTTON, "article_body_001_reload","article_body_001_reload",{},
             "Recargar",
         ))
-        file_path = os.path.join(
-            os.path.dirname(__file__),
-            # "..\\..\\database\\articles\\en_la_disciplina_e_instruccion_del_senor.json"
-            "../../database/articles/en_la_disciplina_e_instruccion_del_senor.json"
-        )
+        # file_path = os.path.join(
+        #     os.path.dirname(__file__),
+        #     # "..\\..\\database\\articles\\en_la_disciplina_e_instruccion_del_senor.json"
+        #     "../../database/articles/en_la_disciplina_e_instruccion_del_senor.json"
+        # )
         try:
             # with open(file_path, "r", encoding="utf-8") as file:
             #     articleContent = json.load(file)
