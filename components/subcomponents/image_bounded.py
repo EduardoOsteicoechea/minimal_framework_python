@@ -18,7 +18,7 @@ class ImageBounded(ComponentBase):
                 #"src":"static/images/personal_photo_white_head_600x600.jpg", 
                 "width":"170%",
                 "alt":"",
-                "style":"right:15px; height:115px; border-radius:5px"
+                "style":"right:15px; height:150px;"
             },
             "this is a parag in the header",
         ))

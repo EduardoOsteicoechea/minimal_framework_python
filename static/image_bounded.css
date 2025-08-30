@@ -4,4 +4,5 @@
     justify-items: center;
     overflow: hidden;
     background: var(--cf);
+    border-radius:5px
 }
