@@ -12,6 +12,6 @@ class ArticleBody001(ComponentBase):
             ["article_body_001"]
         )
         self.addComponent(
-            self,ComponentBase(HTMLContaining.H1, "article_body","article_body",{},
+            self,ComponentBase(HTMLContaining.P, "article_body","article_body",{},
             "Desarrollando Una auténtica relación con Cristo",
         ))
