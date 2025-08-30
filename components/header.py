@@ -15,7 +15,7 @@ class PageHeader(ComponentBase):
         self.css_file_names.extend(["header"])
         self.js_file_names.extend(["header"])
         self.addComponent(self,ImageBounded())
-        self.addComponent(self,
-            ComponentBase(HTMLContaining.P, "header_p","header_p",{},
-            "this is a parag in the header",
-        ))
+        # self.addComponent(self,
+        #     ComponentBase(HTMLContaining.P, "header_p","header_p",{},
+        #     "this is a parag in the header",
+        # ))
