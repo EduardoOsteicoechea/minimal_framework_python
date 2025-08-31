@@ -16,7 +16,7 @@ pip install waitress
 pip install -r requirements.txt
 
     RUN THE SERVER
-waitress-serve --host=0.0.0.0 --port=8080 app:application
+waitress-serve --host=0.0.0.0 --port=4633 app:application
 
     WHEN DONE, OR TO RESET, SHUT DOWN THE SERVER
 ctrl + c
