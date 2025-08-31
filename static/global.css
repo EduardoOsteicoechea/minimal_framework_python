@@ -48,8 +48,8 @@ body{
 	box-sizing:border-box;
 	max-width:600px;
     background: var(--cb);
-    display: grid;
+    /* display: grid;
     grid-template-columns: 0px 100px 15px auto 15px;
-    grid-template-rows: 10px 250px 15px auto 15px;
+    grid-template-rows: 10px 250px 15px auto 15px; */
     /* border: var(--b1); */
 }

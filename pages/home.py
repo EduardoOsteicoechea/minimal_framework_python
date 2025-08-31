@@ -9,5 +9,5 @@ class HomePage(PageBase):
     def __init__(self):
         super().__init__()
         self.set_title("eduardoos")
-        self.addComponent(PageHeader())
-        self.addComponent(PageArticle001())
+        # self.addComponent(PageHeader())
+        self.addComponent(PageArticle001("una_autentica_relacion_cristo"))
