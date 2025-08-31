@@ -5,6 +5,7 @@
     width: 100%;
     grid-template-columns: 0px fit-content 0px;
     grid-template-rows: 10px 250px 10px auto 15px;
+    overflow: hidden;
 }
 
 .article_title_001{   
@@ -13,12 +14,26 @@
     grid-row: 2;
     width: 100%;
 }
+.reload_article_button{
+    background: var(--cf);
+    color: var(--cb);
+    border:none;
+    border-radius: 4px;
+    height: 40px;
+}
 
 .article_body_001{   
     display: flex; 
     flex-direction: column;
     grid-row: 4;
-    width: 100%;
+    max-width: 400px;
+    gap: 15px;
+}
+.article_body_001{   
+    display: flex; 
+    flex-direction: column;
+    grid-row: 4;
+    max-width: 600px;
     gap: 15px;
 }
 

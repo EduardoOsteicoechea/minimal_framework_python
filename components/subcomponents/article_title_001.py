@@ -13,5 +13,9 @@ class ArticleTitle001(ComponentBase):
         )
         self.addComponent(
             self,ComponentBase(HTMLContaining.H1, "article_title_heading","article_title_heading",{},
-            "La palabra disciplina es una traducción del griego paideía.",
+            "Una auténtica relación con Cristo.",
+        ))    
+        self.addComponent(
+            self,ComponentBase(HTMLContaining.BUTTON, "reload_article_button","reload_article_button",{},
+            "Recargar",
         ))
