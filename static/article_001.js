@@ -1,9 +1,10 @@
 const PageArticle001_ArticleTitle001 = document.getElementById("PageArticle001_ArticleTitle001");
+const ArticleTitle001_article_title_heading = document.getElementById("ArticleTitle001_article_title_heading");
 const PageArticle001_ArticleBody001 = document.getElementById("PageArticle001_ArticleBody001");
 const ArticleTitle001_reload_article_button = document.getElementById("ArticleTitle001_reload_article_button");
 // const webUrl = "http://localhost:4633/static/json/en_la_disciplina_e_instruccion_del_senor.json"
-const webUrl = "static/json/en_la_disciplina_e_instruccion_del_senor.json";
 // const webUrl = "https://eduardoos.com/static/json/en_la_disciplina_e_instruccion_del_senor.json";
+const webUrl = "static/json/en_la_disciplina_e_instruccion_del_senor.json";
 
 ArticleTitle001_reload_article_button.addEventListener('click',()=>{
     PageArticle001_ArticleBody001.innerHTML = "Reloading"
@@ -26,8 +27,9 @@ function reloadArticle(url){
         return response.json();
     })
     .then(data => {
-        PageArticle001_ArticleTitle001.innerHTML = `<h1>${data.title}</h1>`;
+        ArticleTitle001_article_title_heading.innerHTML = `<h1>${data.title}</h1>`;
         
+        let htmlContent = ""; 
         data.ideas.forEach(idea => {
             htmlContent += `<h2>${idea.heading}</h2>`;
             idea.subideas.forEach(subidea => {
@@ -35,7 +37,6 @@ function reloadArticle(url){
             });
         });
         PageArticle001_ArticleBody001.innerHTML = htmlContent;
-
     })
     .catch(error => {
         console.error('There was a problem with the fetch operation:', error);
