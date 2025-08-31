@@ -4,6 +4,29 @@ const PageArticle001_ArticleBody001 = document.getElementById("PageArticle001_Ar
 const ArticleTitle001_reload_article_button = document.getElementById("ArticleTitle001_reload_article_button");
 const webUrl = "static/json/una_autentica_relacion_cristo.json";
 
+document.addEventListener('keydown', (event) => {
+    if (event.key.toLowerCase() === 'c') {
+        reloadArticle(webUrl)
+    }
+});
+
+let touchCount = 0;
+let timeoutId = null;
+document.addEventListener('pointerdown', (event) => {
+  event.preventDefault();
+  touchCount++;
+  clearTimeout(timeoutId);
+  timeoutId = setTimeout(() => {
+    touchCount = 0;
+    console.log('Touch counter reset.');
+  }, 300); 
+  if (touchCount === 3) {
+    reloadArticle(webUrl)
+    touchCount = 0;
+    clearTimeout(timeoutId);
+  }
+});
+
 ArticleTitle001_reload_article_button.addEventListener('click',()=>{
     PageArticle001_ArticleBody001.innerHTML = "Reloading"
     setTimeout(()=>{
@@ -16,7 +39,6 @@ setTimeout(()=>{
 },100)
 
 function reloadArticle(url){
-    console.log(`loading from ${url}`)
     fetch(url)
     .then(response => {
         if (!response.ok) {
@@ -29,7 +51,10 @@ function reloadArticle(url){
         
         let htmlContent = ""; 
         data.ideas.forEach(idea => {
-            htmlContent += `<h2>${idea.heading}</h2>`;
+            if(idea.heading)
+            {
+                htmlContent += `<h2>${idea.heading}</h2>`;
+            }
             idea.subideas.forEach(subidea => {
                 htmlContent += `<p>${subidea.content}</p>`;
             });

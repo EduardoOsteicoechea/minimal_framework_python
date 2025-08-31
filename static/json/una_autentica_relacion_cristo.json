@@ -1,60 +1,33 @@
 {
-    "title":"Una auténtica relación con Cristo",
-    "ideas":[
+  "title": "Una auténtica relación con Cristo",
+  "ideas": [
+    {
+      "subideas": [
         {
-            "heading":"La forma correcta de hacer lo correcto",
-            "subideas":[
-                {
-                    "content":"La palabra disciplina es una traducción del griego paideía."
-                },
-                {
-                    "content":"Paideía aparece 6 veces en el Nuevo Testamento."
-                },
-                {
-                    "content":"Y para beneficio nuestro, siempre significa algo semejante."
-                },
-                {
-                    "content":"En general, la palabra \"paideía\" significa disciplina, instrucción, entrenamiento, educación."
-                },
-                {
-                    "content":"Las seis apariciones son:"
-                },
-                {
-                    "content":["Efesios.6.4","2.Timoteo.3.16","Hebreos.12.5","Hebreos.12.7","Hebreos.12.8","Hebreos.12.11"],
-                    "subidea_type":"passage_list"
-                },
-                {
-                    "content":"En nuestro pasaje de Efesios, aprendemos que los Padres deben hacerlo, y que este tipo de disciplina se define como \"del Señor\"."
-                },
-                {
-                    "content":"En este uso de la palabra, paideía, se presenta en la forma dativa, es decir para hablar de la disciplina como un objeto indirecto."
-                },
-                {
-                    "content":"Con objecto directo quiero decir que el énfasis está no en la disciplina, sino el \"Señor\", de quien es esta disciplina."
-                },
-                {
-                    "content":"Es decir, que los padres no estamos llamados a instruir de acuerdo a nuestra experiencia o preferencia, sino que debemos disciplinar en un tipo de disciplina muy específico."
-                },
-                {
-                    "content":"Los padres creyentes debemos disciplinar en la disciplina de Jesucristo."
-                },
-                {
-                    "content":"Para desarrollar una idea más clara de lo que significa esta disciplina del Señor, estudiemos un poco sobre el uso del paideía en el resto del Nuevo Testamento."
-                },
-                {
-                    "content":"En 2 Timoteo 3.16-17 leemos:"
-                },
-                {
-                    "content":"Toda Escritura es inspirada por Dios y útil para enseñar, para reprender, para corregir, para instruir en justicia, a fin de que el hombre de Dios sea perfecto, equipado para toda buena obra.",
-                    "subidea_type":"biblical_quote"
-                },
-                {
-                    "content":"En este pasaje, paideían es traducida como \"instruir\"."
-                },
-                {
-                    "content":"Esta palabra está en la voz acusativa. Es decir, enfatiza la acción de entrenar en justicia."
-                }
-            ]
+          "content": "Hay mil maneras de dañar lo bueno."
+        },
+        {
+          "content": "Imagina que luego de practicar obras sociales, de donar alimentos, luego de alentar al cansado, luego de participar en obras comunitarias; luego de ser condecorado, habiendo logrado el respeto de tus vecinos; luego de ser considerado como un auténtico creyente, luego de lograr un trayecto de obediencia impresionante; luego de hacer todas estas cosas, notas que hacías todo por una razón incorrecta."
+        },
+        {
+          "content": "Imagina que descubres que todo este tiempo practicaste el bien porque esto te hacía sentir importante, te llenaba de satisfacción, te hacía sentir realizado."
+        },
+        {
+          "content": "Imagina que descubres que detrás de todo esto, estaba el deseo de sentirte bien, de sentirte aprobado."
+        },
+        {
+          "content": "Imagina que descubres que orabas y leías la palabra porque sentías que eras aprobado por estas obras. Imagina que descubres que ayunabas porque querías poder sobrenatural para hacer cosas impresionantes, y que ésto te deleitaba porque te hacía sentir fuerte."
+        },
+        {
+          "content": "Imagina que toda tu búsqueda de Dios fue realmente la búsqueda de tu propio bienestar y de tu propio beneficio emocional."
+        },
+        {
+          "content": "Imagina que todas esto es cierto."
+        },
+        {
+          "content": "¿Qué opinarías sobre esta vida espiritual?"
         }
-    ]
+      ]
+    }
+  ]
 }
