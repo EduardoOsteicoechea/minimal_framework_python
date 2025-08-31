@@ -54,3 +54,29 @@
 .article_body_001_biblical_passage{
     font-style: italic;
 }
+
+
+.biblical_quote{
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 10px 10px 10px 10px;
+  background: var(--cg_2);
+    border-radius: 4px;
+}
+.biblical_quote_text{
+  font-size: 14px;
+  font-weight: 400;
+}
+.biblical_quote_reference{
+    background: var(--cf);
+    color: var(--cb);
+    padding: 2px 5px;
+    border-radius: 2px;
+    width: fit-content;
+    font-size: 12px;
+}
+.biblical_quote_key_prhase{
+    font-weight: 600;
+    color: var(--ca_1);
+}

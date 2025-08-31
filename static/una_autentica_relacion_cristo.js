@@ -56,7 +56,27 @@ function reloadArticle(url){
                 htmlContent += `<h2>${idea.heading}</h2>`;
             }
             idea.subideas.forEach(subidea => {
+              if(subidea.type === "biblical_quote")
+              {
+                if(subidea.key_phrases){
+                  console.log(subidea.key_phrases)
+                  subidea.key_phrases.forEach(key_phrase => {
+                    
+                    console.log(key_phrase)
+                    subidea.content = subidea.content.replace(key_phrase, `<span class="biblical_quote_key_prhase">${key_phrase}</span>`)
+                  });
+                }
+                htmlContent += `
+                <div class="biblical_quote">
+                  <p class="biblical_quote_text">${subidea.content}</p>
+                  <p class="biblical_quote_reference">${subidea.biblical_reference}</p>
+                </div>
+                `
+              }
+              else
+              {
                 htmlContent += `<p>${subidea.content}</p>`;
+              }
             });
         });
         PageArticle001_ArticleBody001.innerHTML = htmlContent;
