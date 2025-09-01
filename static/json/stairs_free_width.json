@@ -1,0 +1,14 @@
+{
+  "title":"How to get the free width of a stair",
+  "ideas":[
+    {
+      "heading":"Process",
+      "subideas":[
+        {
+          "content":"Get the run width and subtract the railing invasion into the run width. The remaining space, is the free width.",
+          "type":""
+        }
+      ]
+    }
+  ]
+}
