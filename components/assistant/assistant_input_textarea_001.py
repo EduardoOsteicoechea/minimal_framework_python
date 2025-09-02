@@ -4,10 +4,10 @@ from components.base.htmlTags import HTMLContaining
 from components.base.base import ComponentBase
 
 
-class ArticleBody001(ComponentBase):
+class AssistantInputTextarea001(ComponentBase):
     def __init__(self):
         super().__init__(
-            HTMLContaining.DIV,
+            HTMLContaining.TEXTAREA,
             self.__class__.__name__,
-            ["article_body_001"]
+            ["assistant_input_textarea_001"]
         )

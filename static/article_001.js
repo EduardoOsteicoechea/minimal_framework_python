@@ -75,6 +75,13 @@ function reloadArticle(url){
                 </div>
                 `
               }
+              else if(subidea.type === "image"){
+                htmlContent += `
+                <div class="image">
+                  <img src="static/images/${subidea.content}">
+                </div>
+                `
+              }              
               else
               {
                 htmlContent += `<p>${subidea.content}</p>`;

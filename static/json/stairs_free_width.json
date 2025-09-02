@@ -7,6 +7,10 @@
         {
           "content":"Get the run width and subtract the railing invasion into the run width. The remaining space, is the free width.",
           "type":""
+        },
+        {
+          "content":"MBA_256_001.png",
+          "type":"image"
         }
       ]
     }

@@ -1,8 +1,10 @@
 # pages/home.py
 
+
+from components.article.article_001 import PageArticle001
+from components.assistant.assistant_general_001 import AssitantGeneral001
+from components.header.header import PageHeader
 from pages.base import PageBase
-# from components.header import PageHeader
-from components.article_001 import PageArticle001
 
 
 class HomePage(PageBase):
@@ -10,4 +12,5 @@ class HomePage(PageBase):
         super().__init__()
         self.set_title("eduardoos")
         # self.addComponent(PageHeader())
-        self.addComponent(PageArticle001("stairs_free_width"))
+        self.addComponent(AssitantGeneral001())
+        # self.addComponent(PageArticle001("stairs_free_width"))

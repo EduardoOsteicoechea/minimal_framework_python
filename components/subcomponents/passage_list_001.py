@@ -1,7 +1,7 @@
 # components/subcomponents/image_bounded.py
 
-from components.htmlTags import HTMLContaining, HTMLSimple
-from components.base import ComponentBase
+from components.base.htmlTags import HTMLContaining, HTMLSimple
+from components.base.base import ComponentBase
 
 
 class PassageList001(

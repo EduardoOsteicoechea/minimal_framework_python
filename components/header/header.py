@@ -1,7 +1,7 @@
 # components/header.py
 
-from .htmlTags import HTMLContaining, HTMLSimple
-from .base import ComponentBase
+from components.base.base import ComponentBase
+from components.base.htmlTags import HTMLContaining
 from components.subcomponents.image_bounded import ImageBounded
 
 

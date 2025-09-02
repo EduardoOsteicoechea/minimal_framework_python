@@ -1,0 +1,13 @@
+.action_button_001{
+  color: var(--cf);
+  color: var(--cb);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 14px;
+  resize: none;
+  
+  height: 30px;
+  width: 80px;
+  border: var(--b1);
+}

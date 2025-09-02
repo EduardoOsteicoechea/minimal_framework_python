@@ -1,6 +1,6 @@
 # pages/base.py
 
-from components.base import ComponentBase
+from components.base.base import ComponentBase
 
 
 class PageBase:

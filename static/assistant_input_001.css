@@ -1,0 +1,13 @@
+.assistant_input_001{
+  color: var(--cb);
+  /* display: flex;
+  align-items: center; */
+  padding: 5px;
+  font-size: 14px;
+  resize: none;
+  
+  /* min-height: 30px;
+  max-height: 200px; */
+  width: 100%;
+  border: var(--b1);
+}

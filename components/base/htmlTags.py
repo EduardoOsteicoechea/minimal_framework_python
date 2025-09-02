@@ -26,6 +26,7 @@ class HTMLContaining(Enum):
     ARTICLE = "article"
     ASIDE = "aside"
     MAIN = "main"
+    TEXTAREA = "textarea"
 
 
 class HTMLSimple(Enum):

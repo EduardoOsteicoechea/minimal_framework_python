@@ -1,7 +1,7 @@
 # components/header.py
 
-from .htmlTags import HTMLContaining, HTMLSimple
-from .base import ComponentBase
+from ..base.htmlTags import HTMLContaining, HTMLSimple
+from ..base.base import ComponentBase
 from components.subcomponents.article_title_001 import ArticleTitle001
 from components.subcomponents.article_body_001 import ArticleBody001
 
