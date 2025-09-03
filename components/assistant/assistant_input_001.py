@@ -1,9 +1,11 @@
 # components/subcomponents/image_bounded.py
 
+
+
 from components.assistant.action_button_001 import ActionButton001
 from components.assistant.assistant_input_textarea_001 import AssistantInputTextarea001
-from components.base.htmlTags import HTMLContaining
 from components.base.base import ComponentBase
+from components.base.htmlTags import HTMLContaining
 
 
 class AssistantInput001(ComponentBase):

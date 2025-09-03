@@ -1,7 +1,9 @@
 # components/subcomponents/image_bounded.py
 
-from components.base.htmlTags import HTMLContaining
+
+
 from components.base.base import ComponentBase
+from components.base.htmlTags import HTMLContaining
 
 
 class AssistantInputTextarea001(ComponentBase):

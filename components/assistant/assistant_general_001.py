@@ -1,9 +1,8 @@
 # components/header.py
 
-from components.base.base import ComponentBase
 from components.assistant.assistant_input_001 import AssistantInput001
-from ..base.htmlTags import HTMLContaining
-
+from components.base.base import ComponentBase
+from components.base.htmlTags import HTMLContaining
 
 
 class AssitantGeneral001(ComponentBase):
