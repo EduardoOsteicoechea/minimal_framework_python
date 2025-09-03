@@ -12,7 +12,8 @@ class ActionButton001(ComponentBase):
             self.__class__.__name__,
             ["action_button_001"],
             {"type":"button"},
-            "Send"
+            "Send",
+            True
         )
         self.css_file_names.extend(["action_button_001"])
         self.js_file_names.extend(["action_button_001"])

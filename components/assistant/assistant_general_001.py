@@ -11,8 +11,8 @@ class AssitantGeneral001(ComponentBase):
         super().__init__(
             HTMLContaining.DIV,
             self.__class__.__name__,
-            ["assistant_general_001"]
+            ["assistant_general_001"],{},"",True
         )
         self.css_file_names.extend(["assistant_general_001"])
         self.js_file_names.extend(["assistant_general_001"])
-        self.addComponent(self,AssistantInput001())
+        self.add_component(self,AssistantInput001())

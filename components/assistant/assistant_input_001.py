@@ -11,10 +11,9 @@ class AssistantInput001(ComponentBase):
         super().__init__(
             HTMLContaining.DIV,
             self.__class__.__name__,
-            ["assistant_input_001"]
+            ["assistant_input_001"],{},"",True
         )
         self.css_file_names.extend(["assistant_input_001"])
         self.js_file_names.extend(["assistant_input_001"])
-        self.addComponent(self,AssistantInputTextarea001())
-        self.addComponent(self,ActionButton001())
-        self.content += self.log()
+        self.add_component(self,AssistantInputTextarea001())
+        self.add_component(self,ActionButton001())

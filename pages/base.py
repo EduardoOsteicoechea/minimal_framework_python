@@ -81,7 +81,7 @@ class PageBase:
 
     def html(self):
         for c in self.components:
-            self.extractComponent(c)     
+            self.extract_component(c)     
         parts = [
             self._top,
             self.title,
@@ -102,11 +102,11 @@ class PageBase:
         ]        
         return "".join(parts)
     
-    def addComponent(self, component: 'ComponentBase'):
+    def add_component(self, component: 'ComponentBase'):
         if component:
             self.components.append(component)
             
-    def extractComponent(self, component: 'ComponentBase'):
+    def extract_component(self, component: 'ComponentBase'):
         if component:
             self.add_css(component.css_file_names)
             self.add_js_bottom(component.js_file_names)

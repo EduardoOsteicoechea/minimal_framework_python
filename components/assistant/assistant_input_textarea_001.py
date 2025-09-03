@@ -9,5 +9,5 @@ class AssistantInputTextarea001(ComponentBase):
         super().__init__(
             HTMLContaining.TEXTAREA,
             self.__class__.__name__,
-            ["assistant_input_textarea_001"]
+            ["assistant_input_textarea_001"],{},"",True
         )

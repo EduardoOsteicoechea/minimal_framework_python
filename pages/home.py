@@ -12,5 +12,5 @@ class HomePage(PageBase):
         super().__init__()
         self.set_title("eduardoos")
         # self.addComponent(PageHeader())
-        self.addComponent(AssitantGeneral001())
+        self.add_component(AssitantGeneral001())
         # self.addComponent(PageArticle001("stairs_free_width"))
