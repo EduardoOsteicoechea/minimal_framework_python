@@ -8,7 +8,6 @@ from components.subcomponents.article_body_001 import ArticleBody001
 
 class PageArticle001(ComponentBase):
     def __init__(self,jsFileName):
-        # fileDataAttribute = f"static/json/{jsFileName}.json"
         super().__init__(
             HTMLContaining.DIV,
             self.__class__.__name__,
