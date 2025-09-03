@@ -54,10 +54,11 @@ class ComponentBase:
         print(f"Updating siblings for: {self.id}")        
         if self.parentComponent and self.parentComponent.subcomponents:            
             for sibling in self.parentComponent.subcomponents:
-                if sibling.id != component.id:
-                    print(f"Appending '{sibling.id}' to '{component.id}'")
-                    component.idsHierarchy.siblings.append(sibling.id)
-                    sibling.idsHierarchy.siblings.append(component.id)
+                sibling.idsHierarchy.siblings = self.idsHierarchy.level1ChildsIds
+                # if sibling.id != component.id:
+                #     print(f"Appending '{sibling.id}' to '{component.id}'")
+                #     component.idsHierarchy.siblings.append(sibling.id)
+                #     sibling.idsHierarchy.siblings.append(component.id)
 
     def generate(self) -> str:
         print(f"Generating HTML for: {self.id}")
