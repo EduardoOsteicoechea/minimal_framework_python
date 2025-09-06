@@ -51,17 +51,13 @@ jobs:
             fi
 
             source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
-            #source venv/bin/activate
-            #pip install --no-cache-dir -r requirements.txt
-            #deactivate
-            
             sudo systemctl restart gunicorn
             sudo systemctl daemon-reload
 
             #source venv/bin/activate
             #sudo pip install -r requirements.txt
-            sudo screen -S gunicorn_session
-            gunicorn --bind 0.0.0.0:4633 app:application
+            # sudo screen -S gunicorn_session
+            # gunicorn --bind 0.0.0.0:4633 app:application
                   
             sudo rm -rf /var/cache/nginx/*
                   
