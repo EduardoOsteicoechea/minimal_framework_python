@@ -37,34 +37,7 @@ def application(environ, start_response):
             response_body = "This endpoint is ready to receive a POST request."
             return [response_body.encode('utf-8')]
 
-    if path.startswith('/static/'):
-        filename = path.replace('/static/', '')
-        filepath = os.path.join(STATIC_DIR, filename)
-
-        if os.path.exists(filepath):
-            with open(filepath, 'rb') as f:
-                content = f.read()
-            if filename.endswith('.css'):
-                content_type = 'text/css'
-            elif filename.endswith('.js'):
-                content_type = 'application/javascript'
-            elif filename.endswith('.ico'):
-                content_type = 'image/x-icon'
-            elif filename.endswith('.png'):
-                content_type = 'image/png'
-            elif filename.endswith('.jpg'):
-                content_type = 'image/jpeg'
-            else:
-                content_type = 'application/octet-stream'
-            headers = [('Content-type', content_type),
-                       ('Content-Length', str(len(content)))]
-            start_response('200 OK', headers)
-            return [content]
-        else:
-            start_response('404 Not Found', [('Content-type', 'text/plain')])
-            return [b'File not found']
-
-    if path == '/':
+    if path == '/api/':
         status = '200 OK'
         headers = [('Content-type', 'text/html')]
         start_response(status, headers)
