@@ -51,7 +51,8 @@ jobs:
             fi
 
             # Activate venv and install dependencies
-            source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
+            source venv/bin/activate 
+            sudo pip install --no-cache-dir -r requirements.txt
             
             # Stop any running gunicorn process
             sudo fuser -k 4633/tcp || true
