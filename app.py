@@ -14,12 +14,12 @@ def application(environ, start_response):
             ('Access-Control-Allow-Headers', 'Content-Type'),
         ]
         start_response(status, headers)
-        return [b''] # Return an empty response for OPTIONS
+        return [b'']
 
     if path == '/api/sniper':
         status = '200 OK'
         headers = [
-            ('Access-Control-Allow-Origin', '*'),
+            ('Access-Control-Allow-Origin', 'http://localhost:4555'),
             ('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'),
             ('Access-Control-Allow-Headers', 'Content-Type')
         ]
