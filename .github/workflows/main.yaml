@@ -50,16 +50,12 @@ jobs:
               python3 -m venv venv
             fi
 
-            # Activate venv and install dependencies
             source venv/bin/activate 
             sudo pip install --no-cache-dir -r requirements.txt
             
-            # Stop any running gunicorn process
             sudo fuser -k 4633/tcp || true
             sudo screen -S gunicorn_session -X quit || true
 
-            # Start gunicorn
-            sudo screen -S gunicorn_session -dm gunicorn --bind 0.0.0.0:4633 app:application
 
             # source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
             # sudo systemctl restart gunicorn
@@ -67,8 +63,8 @@ jobs:
 
             # # source venv/bin/activate
             # # sudo pip install -r requirements.txt
-            # sudo screen -S gunicorn_session
-            # gunicorn --bind 0.0.0.0:4633 app:application
+            sudo screen -S gunicorn_session
+            gunicorn --bind 0.0.0.0:4633 app:application
                   
             sudo rm -rf /var/cache/nginx/*
                   
