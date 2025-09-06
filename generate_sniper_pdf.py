@@ -3,7 +3,6 @@ from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
 
-# Fix the class to accept a dictionary
 class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
         self.nombre_de_la_empresa = data.get("nombre_de_la_empresa")

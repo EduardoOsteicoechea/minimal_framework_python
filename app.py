@@ -6,6 +6,15 @@ STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
 def application(environ, start_response):
     path = environ.get('PATH_INFO', '')
     status = '200 OK'
+    
+    if environ['REQUEST_METHOD'] == 'OPTIONS':
+        headers = [
+            ('Access-Control-Allow-Origin', 'http://localhost:4555'),
+            ('Access-Control-Allow-Methods', 'POST, OPTIONS'),
+            ('Access-Control-Allow-Headers', 'Content-Type'),
+        ]
+        start_response(status, headers)
+        return [b''] # Return an empty response for OPTIONS
 
     if path == '/api/sniper':
         status = '200 OK'
