@@ -43,16 +43,16 @@ jobs:
             sudo rm -rf "$TEMP_CLONE_DIR"
             cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
-            sudo fuser -k 4633/tcp || true
-            sudo screen -S gunicorn_session -X quit || true
-
             python3 -m venv venv
-
             source venv/bin/activate
+
             pip install --no-cache-dir -r requirements.txt
+
             sudo fuser -k 4633/tcp || true
-            sudo screen -S gunicorn_session 
-            sudo gunicorn --bind 0.0.0.0:4633 app:application
+
+            nohup ./venv/bin/gunicorn --bind 0.0.0.0:4633 app:application &
+            # sudo screen -S gunicorn_session 
+            # sudo gunicorn --bind 0.0.0.0:4633 app:application
                   
             sudo rm -rf /var/cache/nginx/*
                   
