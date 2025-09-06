@@ -3,10 +3,11 @@ from generate_sniper_pdf import generate_sniper_pdf
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
 
+
 def application(environ, start_response):
     path = environ.get('PATH_INFO', '')
     status = '200 OK'
-    
+
     if environ['REQUEST_METHOD'] == 'OPTIONS':
         headers = [
             ('Access-Control-Allow-Origin', 'http://localhost:4555'),
@@ -30,7 +31,8 @@ def application(environ, start_response):
                 decoded_body = request_body.decode('utf-8')
                 pdf_data = generate_sniper_pdf(decoded_body)
                 headers.append(('Content-type', 'application/pdf'))
-                headers.append(('Content-Disposition', 'attachment; filename="report.pdf"'))
+                headers.append(
+                    ('Content-Disposition', 'attachment; filename="report.pdf"'))
                 headers.append(('Content-Length', str(len(pdf_data))))
                 start_response(status, headers)
                 return [pdf_data]
@@ -39,7 +41,7 @@ def application(environ, start_response):
                 error_headers = [('Content-type', 'text/plain')]
                 start_response(status, error_headers)
                 error_message = f"An error occurred while processing POST request: {e}"
-                return [error_message.encode('utf-8')]                
+                return [error_message.encode('utf-8')]
         else:
             headers.append(('Content-type', 'text/html'))
             start_response(status, headers)
@@ -59,7 +61,6 @@ def application(environ, start_response):
             start_response(status, headers)
             error_message = f"An error occurred: {e}"
             return [error_message.encode('utf-8')]
-        
 
-    # start_response('404 Not Found', [('Content-type', 'text/plain')])
-    # return [b'Path not found']
+    start_response('404 Not Found', [('Content-type', 'text/plain')])
+    return [b'Path not found']
