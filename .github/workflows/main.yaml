@@ -50,11 +50,11 @@ jobs:
 
             sudo fuser -k 4633/tcp || true
 
-            nohup ./venv/bin/gunicorn --bind 0.0.0.0:4633 app:application &
+            # nohup ./venv/bin/gunicorn --bind 0.0.0.0:4633 app:application &
+            nohup python -m gunicorn --bind 0.0.0.0:4633 app:application &
             # sudo screen -S gunicorn_session 
             # sudo gunicorn --bind 0.0.0.0:4633 app:application
                   
-            sudo rm -rf /var/cache/nginx/*
-                  
+            sudo rm -rf /var/cache/nginx/*                  
             sudo systemctl restart nginx
             sudo systemctl reload nginx
