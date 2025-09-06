@@ -8,31 +8,14 @@ def application(environ, start_response):
     path = environ.get('PATH_INFO', '')
     status = '200 OK'
     headers = [
-        ('Access-Control-Allow-Origin', 'http://localhost:4555'),
+        ('Access-Control-Allow-Origin', '*'),
         ('Access-Control-Allow-Methods', 'POST, OPTIONS'),
         ('Access-Control-Allow-Headers', 'Content-Type'),
     ]
-
-    # if environ['REQUEST_METHOD'] == 'OPTIONS':
-    #     headers = [
-    #         ('Access-Control-Allow-Origin', 'http://localhost:4555'),
-    #         ('Access-Control-Allow-Methods', 'POST, OPTIONS'),
-    #         ('Access-Control-Allow-Headers', 'Content-Type'),
-    #     ]
-    #     start_response(status, headers)
-    #     return [b'']
-
     if path == '/api/sniper':
         if environ['REQUEST_METHOD'] == 'OPTIONS':
             start_response(status, headers)
             return [b'']
-        
-        # status = '200 OK'
-        # headers = [
-        #     ('Access-Control-Allow-Origin', 'http://localhost:4555'),
-        #     ('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'),
-        #     ('Access-Control-Allow-Headers', 'Content-Type')
-        # ]
         if environ['REQUEST_METHOD'] == 'POST':
             try:
                 content_length = int(environ.get('CONTENT_LENGTH', 0))
