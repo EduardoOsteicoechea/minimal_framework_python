@@ -43,18 +43,18 @@ jobs:
             sudo rm -rf "$TEMP_CLONE_DIR"
             cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
-            # sudo fuser -k 4633/tcp || true
-            # screen -S gunicorn_session -X quit || true
+            sudo fuser -k 4633/tcp || true
+            screen -S gunicorn_session -X quit || true
 
             if [ ! -d "venv" ]; then
               python3 -m venv venv
             fi
 
-            source venv/bin/activate 
+            sudo source venv/bin/activate 
             sudo pip install --no-cache-dir -r requirements.txt
             
-            sudo fuser -k 4633/tcp || true
-            sudo screen -S gunicorn_session -X quit || true
+            # sudo fuser -k 4633/tcp || true
+            # sudo screen -S gunicorn_session -X quit || true
 
 
             # source venv/bin/activate && pip install --no-cache-dir -r requirements.txt
