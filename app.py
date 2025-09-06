@@ -1,28 +1,31 @@
 import os
 from generate_sniper_pdf import generate_sniper_pdf
 
+STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
+
+
 def application(environ, start_response):
     path = environ.get('PATH_INFO', '')
-    status = '200 OK'
-    headers = [
-        ('Access-Control-Allow-Origin', 'http://localhost:4555'),
-        ('Access-Control-Allow-Methods', 'POST, OPTIONS'),
-        ('Access-Control-Allow-Headers', 'Content-Type'),
-    ]
+
     if path == '/api/sniper':
         if environ['REQUEST_METHOD'] == 'OPTIONS':
-            start_response(status, headers)
+            status = '200 OK'
+            start_response(status, [])
             return [b'']
+
         if environ['REQUEST_METHOD'] == 'POST':
             try:
                 content_length = int(environ.get('CONTENT_LENGTH', 0))
                 request_body = environ['wsgi.input'].read(content_length)
                 decoded_body = request_body.decode('utf-8')
                 pdf_data = generate_sniper_pdf(decoded_body)
-                headers.append(('Content-type', 'application/pdf'))
-                headers.append(
-                    ('Content-Disposition', 'attachment; filename="report.pdf"'))
-                headers.append(('Content-Length', str(len(pdf_data))))
+
+                status = '200 OK'
+                headers = [
+                    ('Content-type', 'application/pdf'),
+                    ('Content-Disposition', 'attachment; filename="report.pdf"'),
+                    ('Content-Length', str(len(pdf_data)))
+                ]
                 start_response(status, headers)
                 return [pdf_data]
             except Exception as e:
@@ -32,7 +35,8 @@ def application(environ, start_response):
                 error_message = f"An error occurred while processing POST request: {e}"
                 return [error_message.encode('utf-8')]
         else:
-            headers.append(('Content-type', 'text/html'))
+            status = '200 OK'
+            headers = [('Content-type', 'text/html')]
             start_response(status, headers)
             response_body = "This endpoint is ready to receive a POST request."
             return [response_body.encode('utf-8')]
