@@ -1,10 +1,41 @@
 import os
-from pages.home import HomePage
+from generate_sniper_pdf import generate_sniper_pdf
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
 
 def application(environ, start_response):
     path = environ.get('PATH_INFO', '')
+    status = '200 OK'
+
+    if path == '/api/sniper':
+        status = '200 OK'
+        headers = [
+            ('Access-Control-Allow-Origin', '*'),
+            ('Access-Control-Allow-Methods', 'GET, POST, OPTIONS'),
+            ('Access-Control-Allow-Headers', 'Content-Type')
+        ]
+        if environ['REQUEST_METHOD'] == 'POST':
+            try:
+                content_length = int(environ.get('CONTENT_LENGTH', 0))
+                request_body = environ['wsgi.input'].read(content_length)
+                decoded_body = request_body.decode('utf-8')
+                pdf_data = generate_sniper_pdf(decoded_body)
+                headers.append(('Content-type', 'application/pdf'))
+                headers.append(('Content-Disposition', 'attachment; filename="report.pdf"'))
+                headers.append(('Content-Length', str(len(pdf_data))))
+                start_response(status, headers)
+                return [pdf_data]
+            except Exception as e:
+                status = '500 Internal Server Error'
+                error_headers = [('Content-type', 'text/plain')]
+                start_response(status, error_headers)
+                error_message = f"An error occurred while processing POST request: {e}"
+                return [error_message.encode('utf-8')]                
+        else:
+            headers.append(('Content-type', 'text/html'))
+            start_response(status, headers)
+            response_body = "This endpoint is ready to receive a POST request."
+            return [response_body.encode('utf-8')]
 
     if path.startswith('/static/'):
         filename = path.replace('/static/', '')
@@ -32,15 +63,13 @@ def application(environ, start_response):
         else:
             start_response('404 Not Found', [('Content-type', 'text/plain')])
             return [b'File not found']
-            
+
     if path == '/':
         status = '200 OK'
         headers = [('Content-type', 'text/html')]
         start_response(status, headers)
-
         try:
-            page_instance = HomePage()
-            response_body = page_instance.html()
+            response_body = "Working"
             return [response_body.encode('utf-8')]
         except Exception as e:
             status = '500 Internal Server Error'
@@ -48,6 +77,7 @@ def application(environ, start_response):
             start_response(status, headers)
             error_message = f"An error occurred: {e}"
             return [error_message.encode('utf-8')]
-    
+        
+
     start_response('404 Not Found', [('Content-type', 'text/plain')])
     return [b'Path not found']
