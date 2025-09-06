@@ -14,4 +14,7 @@ class VehicleRegistrationCertificate:
         ]
 
     def print(self):
-        return "".join(self.fields[1])
+        output_lines = []
+        for field_name, value in self.fields:
+            output_lines.append(f"{field_name}: {value}")
+        return "\n".join(output_lines)
