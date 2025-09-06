@@ -79,5 +79,5 @@ def application(environ, start_response):
             return [error_message.encode('utf-8')]
         
 
-    start_response('404 Not Found', [('Content-type', 'text/plain')])
-    return [b'Path not found']
+    # start_response('404 Not Found', [('Content-type', 'text/plain')])
+    # return [b'Path not found']
