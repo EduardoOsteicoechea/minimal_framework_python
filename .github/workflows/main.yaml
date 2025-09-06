@@ -54,7 +54,7 @@ jobs:
             sudo systemctl restart gunicorn
             sudo systemctl daemon-reload
 
-            source venv/bin/activate
+            # source venv/bin/activate
             # sudo pip install -r requirements.txt
             sudo screen -S gunicorn_session
             gunicorn --bind 0.0.0.0:4633 app:application
