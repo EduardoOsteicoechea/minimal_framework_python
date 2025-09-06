@@ -33,60 +33,36 @@ jobs:
             sudo chown -R ${{ secrets.USERNAME }}:${{ secrets.USERNAME }} "$DEST_DIR"
             sudo chmod -R 755 "$DEST_DIR"
 
-            echo "Cloning repository to temporary directory: $TEMP_CLONE_DIR"
             git clone "$REMOTE_REPO_URL" "$TEMP_CLONE_DIR"
 
             if [ ! -d "$TEMP_CLONE_DIR" ]; then
-              echo "Error: Failed to clone repository $REMOTE_REPO_URL"
               exit 1
             fi
 
-            # Copy all content from the cloned repo to the web root
-            echo "Copying all content to $DEST_DIR"
             sudo cp -r "$TEMP_CLONE_DIR"/* "$DEST_DIR"/
 
-            # Clean up the temporary directory
             sudo rm -rf "$TEMP_CLONE_DIR"
 
-            # --- Navigate to the application directory (CRUCIAL!) ---
-            echo "Navigating to application directory: $DEST_DIR"
             cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
-            # --- Stop previous API processes ---
-            echo "Attempting to stop any existing Gunicorn process on port 4633..."
             sudo fuser -k 4633/tcp || true
 
-            echo "Attempting to kill existing screen session 'gunicorn_session'..."
             screen -S gunicorn_session -X quit || true
 
-            # --- Setup virtual environment & install dependencies ---
-            # Ensure the virtual environment is created within the application directory
             if [ ! -d "venv" ]; then
-              echo "Creating virtual environment..."
               python3 -m venv venv
             fi
 
-            echo "Activating virtual environment..."
             source venv/bin/activate
 
-            echo "Installing/updating Python dependencies from requirements.txt..."
             pip install -r requirements.txt
 
-            # --- Start new API process ---
-            echo "Starting Gunicorn in a detached screen session 'gunicorn_session'..."
-            # Start gunicorn in a detached screen session, executing the command within the virtual env
             sudo screen -S gunicorn_session
             gunicorn --bind 0.0.0.0:4633 app:application
-
                   
             sudo rm -rf /var/cache/nginx/*
                   
             echo "Restarting Nginx..."
             sudo systemctl restart nginx
             echo "Reloading Nginx configuration..."
-            sudo systemctl reload nginx 
-
-      # - name: Wait for deployment
-      #   run: |
-      #     echo "Waiting 5 seconds for Nginx to settle..."
-      #     sleep 5
+            sudo systemctl reload nginx
