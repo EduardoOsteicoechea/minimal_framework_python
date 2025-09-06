@@ -8,11 +8,18 @@ class VehicleRegistrationCertificate:
         self.nombre_de_la_empresa = data.get("nombre_de_la_empresa")
         self.fecha_emision = data.get("fecha_emision")
         self.factura_1_n_fecha = data.get("factura_1_n_fecha")
-        self.fields = [
-            ["nombre_de_la_empresa", self.nombre_de_la_empresa],
-            ["fecha_emision", self.fecha_emision],
-            ["factura_1_n_fecha", self.factura_1_n_fecha],
-        ]
+        self.placa = data.get("placa")
+        self.marca = data.get("marca")
+        self.modelos = data.get("modelos")
+        self.ano_de_fabricacion = data.get("ano_de_fabricacion")
+        
+        self.fields = list(vars(self).items())
+
+        # self.fields = [
+        #     ["nombre_de_la_empresa", self.nombre_de_la_empresa],
+        #     ["fecha_emision", self.fecha_emision],
+        #     ["factura_1_n_fecha", self.factura_1_n_fecha],
+        # ]
 
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
