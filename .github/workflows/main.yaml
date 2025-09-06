@@ -25,6 +25,7 @@ jobs:
           username: ${{ secrets.USERNAME }} 
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
+
             REMOTE_REPO_URL="https://github.com/EduardoOsteicoechea/minimal_framework_python"
             TEMP_CLONE_DIR="/tmp/static_repo_$(date +%s)"
             DEST_DIR="/var/www/html"
@@ -50,7 +51,13 @@ jobs:
             fi
 
             source venv/bin/activate
-            sudo pip install -r requirements.txt
+            pip install --no-cache-dir -r requirements.txt
+            deactivate
+            sudo systemctl restart gunicorn
+            sudo systemctl daemon-reload
+
+            #source venv/bin/activate
+            #sudo pip install -r requirements.txt
             sudo screen -S gunicorn_session
             gunicorn --bind 0.0.0.0:4633 app:application
                   
