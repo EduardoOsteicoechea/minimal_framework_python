@@ -2,7 +2,7 @@ name: Deploy to EC2
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ["main"]
 
 jobs:
   deploy:
@@ -22,7 +22,7 @@ jobs:
         uses: appleboy/ssh-action@master
         with:
           host: ${{ secrets.HOST_DNS }}
-          username: ${{ secrets.USERNAME }} 
+          username: ${{ secrets.USERNAME }}
           key: ${{ secrets.SSH_PRIVATE_KEY }}
           script: |
 
@@ -50,12 +50,11 @@ jobs:
               python3 -m venv venv
             fi
 
-            /bin/bash -c "
-              source venv/bin/activate
-              pip install --no-cache-dir -r requirements.txt
-              sudo fuser -k 4633/tcp || true
-              screen -S gunicorn_session -dm gunicorn --bind 0.0.0.0:4633 app:application
-            "
+            source venv/bin/activate
+            pip install --no-cache-dir -r requirements.txt
+            sudo fuser -k 4633/tcp || true
+            sudo screen -S gunicorn_session 
+            sudo gunicorn --bind 0.0.0.0:4633 app:application
                   
             sudo rm -rf /var/cache/nginx/*
                   
