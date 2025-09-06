@@ -34,19 +34,15 @@ jobs:
             sudo chmod -R 755 "$DEST_DIR"
 
             git clone "$REMOTE_REPO_URL" "$TEMP_CLONE_DIR"
-
             if [ ! -d "$TEMP_CLONE_DIR" ]; then
               exit 1
             fi
 
             sudo cp -r "$TEMP_CLONE_DIR"/* "$DEST_DIR"/
-
             sudo rm -rf "$TEMP_CLONE_DIR"
-
             cd "$DEST_DIR" || { echo "Error: Failed to change directory to $DEST_DIR"; exit 1; }
 
             sudo fuser -k 4633/tcp || true
-
             screen -S gunicorn_session -X quit || true
 
             if [ ! -d "venv" ]; then
@@ -54,9 +50,7 @@ jobs:
             fi
 
             source venv/bin/activate
-
-            pip install -r requirements.txt
-
+            sudo pip install -r requirements.txt
             sudo screen -S gunicorn_session
             gunicorn --bind 0.0.0.0:4633 app:application
                   
