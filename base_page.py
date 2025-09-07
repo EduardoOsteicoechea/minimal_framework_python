@@ -4,12 +4,19 @@ class BasePage:
         self.css = css
         self.js = js
         self.is_article = is_article
+        self.css_tags = ""
+        self.js_tags = ""
+        self.article_tag = ""
 
     def _generate_css_tags(self):
-        return "".join([f'<link rel="stylesheet" href="{name}.css">' for name in self.css])
+        if self.css:
+            return "".join([f'<link rel="stylesheet" href="{name}.css">' for name in self.css])
+        return ""
 
     def _generate_js_tags(self):
-        return "".join([f'<script src="{name}.js" defer></script>' for name in self.js])
+        if self.js:
+            return "".join([f'<script src="{name}.js" defer></script>' for name in self.js])
+        return ""
 
     def _generate_article_tag(self):
         if self.is_article:
