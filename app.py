@@ -34,7 +34,7 @@ def application(environ, start_response):
             response_body = page.html().encode('utf-8')
             
         elif path == '/songs':
-            page = BasePage("Cánticos", ["article", "songs"], ["article", "songs"], True)
+            page = BasePage("Cánticos", ["article", "songs"], ["songs"], True)
             response_body = page.html().encode('utf-8')
         
         else:
