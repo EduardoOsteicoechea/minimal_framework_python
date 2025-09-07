@@ -27,8 +27,6 @@ class BasePage:
         css_tags = self._generate_css_tags()
         js_tags = self._generate_js_tags()
         article_tag = self._generate_article_tag()
-        
-    def html(self):
         return f"""
         <!DOCTYPE html>
         <html lang="en">
@@ -39,7 +37,7 @@ class BasePage:
             <link rel="icon" type="image/x-icon" href="favicon.ico">
             <link rel="stylesheet" href="global.css">
             <script src="global.js" defer></script>
-            {self.css_tags}
+            {css_tags}
         </head>
         <body>
             <div class="page_asistant"></div>
@@ -48,11 +46,11 @@ class BasePage:
             <div class="page_header"></div>
             <aside class="first_sidebar"></aside>
             <main class="main">
-                {self.article_tag}
+                {article_tag}
             </main>
             <aside class="second_sidebar"></aside>
             <footer class="page_footer"></footer>
-            {self.js_tags}
+            {js_tags}
         </body>
         </html>        
         """
