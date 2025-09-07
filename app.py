@@ -1,4 +1,5 @@
 import os
+from base_page import BasePage
 from generate_sniper_pdf import generate_sniper_pdf
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
@@ -47,6 +48,34 @@ def application(environ, start_response):
         start_response(status, headers)
         try:
             response_body = "Working"
+            return [response_body.encode('utf-8')]
+        except Exception as e:
+            status = '500 Internal Server Error'
+            headers = [('Content-type', 'text/plain')]
+            start_response(status, headers)
+            error_message = f"An error occurred: {e}"
+            return [error_message.encode('utf-8')]
+        
+    if path == '/':
+        status = '200 OK'
+        headers = [('Content-type', 'text/html')]
+        start_response(status, headers)
+        try:
+            response_body = BasePage("Eduardo Osteicoechea", [], [], False).html()
+            return [response_body.encode('utf-8')]
+        except Exception as e:
+            status = '500 Internal Server Error'
+            headers = [('Content-type', 'text/plain')]
+            start_response(status, headers)
+            error_message = f"An error occurred: {e}"
+            return [error_message.encode('utf-8')]
+        
+    if path == '/article':
+        status = '200 OK'
+        headers = [('Content-type', 'text/html')]
+        start_response(status, headers)
+        try:
+            response_body = BasePage("Eduardo Osteicoechea", ["article"], ["article"], True).html()
             return [response_body.encode('utf-8')]
         except Exception as e:
             status = '500 Internal Server Error'
