@@ -60,7 +60,7 @@ class BasePage:
             </main>
             <aside class="second_sidebar"></aside>
             <footer class="page_footer"></footer>
-            <div id="page_attributes" data-main-data-file-url="{self.main_data_file_url}" data-api-endpoint="{self.main_api_endpoint}"></div>
+            <div id="page_dataset_attributes" data-main-data-file-url="{self.main_data_file_url}" data-api-endpoint="{self.main_api_endpoint}"></div>
             {js_tags}
         </body>
         </html>        
