@@ -55,7 +55,7 @@ class BasePage:
             <div class="skip_to_content"></div>
             <div class="page_header"></div>
             <aside class="first_sidebar"></aside>
-            <main id="main" class="main">
+            <main>
                 {article_tag}
             </main>
             <aside class="second_sidebar"></aside>
