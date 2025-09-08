@@ -5,7 +5,8 @@ class BasePage:
         css: list = [], 
         js: list = [], 
         is_article: bool = False,
-        main_data_file_url = "data_file/sample.json"
+        main_data_file_url = "data_file/sample.json",
+        main_api_endpoint = "api/"
         ):
         self.title = title
         self.css = css
@@ -15,6 +16,7 @@ class BasePage:
         self.js_tags = ""
         self.article_tag = ""
         self.main_data_file_url = main_data_file_url
+        self.main_api_endpoint = main_api_endpoint
 
     def _generate_css_tags(self):
         if self.css:
@@ -58,7 +60,7 @@ class BasePage:
             </main>
             <aside class="second_sidebar"></aside>
             <footer class="page_footer"></footer>
-            <div id="page_attributes" data-main-data-file-url="{self.main_data_file_url}"></div>
+            <div id="page_attributes" data-main-data-file-url="{self.main_data_file_url}" data-api-endpoint="{self.main_api_endpoint}"></div>
             {js_tags}
         </body>
         </html>        

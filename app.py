@@ -38,7 +38,7 @@ def application(environ, start_response):
             response_body = page.html().encode('utf-8')
             
         elif path == '/sniper':
-            page = BasePage("Impresión Perfecta para tus Certificados", ["sniper_base"], ["sniper_base"], True, "data_file/sniper_base.json")
+            page = BasePage("Impresión Perfecta para tus Certificados", ["sniper_base"], ["sniper_base"], False, "data_file/sniper_base.json", "/api/sniper")
             response_body = page.html().encode('utf-8')
         
         else:
