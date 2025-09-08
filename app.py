@@ -30,11 +30,15 @@ def application(environ, start_response):
             response_body = page.html().encode('utf-8')
             
         elif path == '/article':
-            page = BasePage("Artículos", ["article"], ["article"], True)
+            page = BasePage("Artículos", ["article"], ["article"], True, "data_file/un_dios_prudente.json")
             response_body = page.html().encode('utf-8')
             
         elif path == '/songs':
-            page = BasePage("Cánticos", ["article", "songs"], ["songs"], True)
+            page = BasePage("Cánticos", ["article", "songs"], ["songs"], True, "data_file/orquesta_del_desierto.json")
+            response_body = page.html().encode('utf-8')
+            
+        elif path == '/sniper':
+            page = BasePage("Impresión Perfecta para tus Certificados", ["sniper_base"], ["sniper_base"], True, "data_file/sniper_base.json")
             response_body = page.html().encode('utf-8')
         
         else:
@@ -45,7 +49,7 @@ def application(environ, start_response):
         status = '500 Internal Server Error'
         response_body = f"An error occurred: {e}".encode('utf-8')
 
-    # The headers list is now empty or minimal, to be handled by Nginx
+    # The headers list is empty, to be handled by Nginx
     headers = [] 
     start_response(status, headers)
     return [response_body]

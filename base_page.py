@@ -1,5 +1,12 @@
 class BasePage:
-    def __init__(self, title="Eduardo Osteicoechea", css: list = [], js: list = [], is_article: bool = False):
+    def __init__(
+        self, 
+        title="Eduardo Osteicoechea", 
+        css: list = [], 
+        js: list = [], 
+        is_article: bool = False,
+        main_data_file_url = "data_file/sample.json"
+        ):
         self.title = title
         self.css = css
         self.js = js
@@ -7,6 +14,7 @@ class BasePage:
         self.css_tags = ""
         self.js_tags = ""
         self.article_tag = ""
+        self.main_data_file_url = main_data_file_url
 
     def _generate_css_tags(self):
         if self.css:
@@ -34,7 +42,7 @@ class BasePage:
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{self.title}</title>
-            <link rel="icon" type="image/x-icon" href="favicon.ico">
+            <link rel="icon" type="image/x-icon" href="images/favicon.ico">
             <link rel="stylesheet" href="global.css">
             <script src="global.js" defer></script>
             {css_tags}
@@ -50,6 +58,7 @@ class BasePage:
             </main>
             <aside class="second_sidebar"></aside>
             <footer class="page_footer"></footer>
+            <div id="page_attributes" data-main-data-file-url="{self.main_data_file_url}"></div>
             {js_tags}
         </body>
         </html>        
