@@ -25,7 +25,7 @@ class BasePage:
 
     def _generate_js_tags(self):
         if self.js:
-            return "".join([f'<script src="{name}.js" defer></script>' for name in self.js])
+            return "".join([f'<script type="module" src="{name}.js" defer></script>' for name in self.js])
         return ""
 
     def _generate_article_tag(self):
@@ -60,7 +60,7 @@ class BasePage:
             </main>
             <aside class="second_sidebar"></aside>
             <footer class="page_footer"></footer>
-            <div id="page_dataset_attributes" data-main-data-file-url="{self.main_data_file_url}" data-api-endpoint="{self.main_api_endpoint}"></div>
+            <div id="page_dataset_attributes" data-main-data-file-url="{self.main_data_file_url}" data-main-api-endpoint="{self.main_api_endpoint}"></div>
             {js_tags}
         </body>
         </html>        
