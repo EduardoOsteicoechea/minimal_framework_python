@@ -49,11 +49,14 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     data = json.loads(decoded_body)
     content = VehicleRegistrationCertificate(data)
 
-    vertical_location_counter = 700 # Start from the top of the page
-    for field_name, value in content.fields:
-        line = f"{field_name.replace('_', ' ').title()}: {value}"
-        c.drawString(72, vertical_location_counter, line) # 72 is 1 inch
-        vertical_location_counter -= 15 # Move down for the next line
+    # vertical_location_counter = 700 # Start from the top of the page
+    # for field_name, value in content.fields:
+    #     line = f"{field_name.replace('_', ' ').title()}: {value}"
+    #     c.drawString(72, vertical_location_counter, line) # 72 is 1 inch
+    #     vertical_location_counter -= 15 # Move down for the next line
+
+    c.drawString(190, 164, content.nombre_de_la_empresa)
+    c.drawString(569, 294, content.nombre_de_la_empresa)
 
     c.save()
     buffer.seek(0)
