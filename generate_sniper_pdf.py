@@ -50,12 +50,11 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     wu = page_width / 100
     hu = page_height / 100
     
-    data = json.loads(decoded_body)
-    
+    data = json.loads(decoded_body)    
     content = VehicleRegistrationCertificate(data)
     
-    c.drawString(wu*24, hu*16, content.nombre_de_la_empresa)    
-    c.drawString(hu*70, hu*28, content.uso)
+    c.drawString(wu*76, hu*84, content.nombre_de_la_empresa)    
+    c.drawString(wu*30, hu*72, content.uso)
 
     c.save()
     buffer.seek(0)
