@@ -56,7 +56,7 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     #     vertical_location_counter -= 15 # Move down for the next line
 
     c.drawString(190, 164, content.nombre_de_la_empresa)
-    c.drawString(569, 294, content.nombre_de_la_empresa)
+    c.drawString(569, 294, content.uso)
 
     c.save()
     buffer.seek(0)
