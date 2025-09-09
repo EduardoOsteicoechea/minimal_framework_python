@@ -45,17 +45,17 @@ class VehicleRegistrationCertificate:
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    
-    data = json.loads(decoded_body)
-    content = VehicleRegistrationCertificate(data)
 
     page_width, page_height = letter
+    wu = page_width / 100
+    hu = page_height / 100
     
     data = json.loads(decoded_body)
+    
     content = VehicleRegistrationCertificate(data)
     
-    c.drawString(page_width*.24, page_height*.16, content.nombre_de_la_empresa)    
-    c.drawString(page_width*.7, page_height*.28, content.uso)
+    c.drawString(wu*24, hu*16, content.nombre_de_la_empresa)    
+    c.drawString(hu*70, hu*28, content.uso)
 
     c.save()
     buffer.seek(0)
