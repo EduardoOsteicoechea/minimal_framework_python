@@ -7,15 +7,16 @@ class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
         self.nombre_de_la_empresa = [235, 834.5, data.get("nombre_de_la_empresa")]
         
-        self.fecha_de_emision = [188,813,data.get("fecha_de_emision")]
-        self.serie_de_numero_de_factura_1 = [513,813, data.get("serie_de_numero_de_factura_1")]
+        self.fecha_de_emision = [188, 813, data.get("fecha_de_emision")]
+        self.serie_de_numero_de_factura_1 = [513, 813, data.get("serie_de_numero_de_factura_1")]
         self.numero_de_factura_1 = data.get("numero_de_factura_1")
         self.fecha_de_factura_1 = data.get("fecha_de_factura_1")
         
-        self.placa = [134,793,data.get("placa")]
-        self.marca = data.get("marca")
-        self.modelo = data.get("modelo")
-        self.ano_de_fabricacion = data.get("ano_de_fabricacion")
+        self.placa = [134, 793, data.get("placa")]        
+        self.marca = [299, 793, data.get("marca")]        
+        self.modelo = [677, 793, data.get("modelo")]
+        
+        self.ano_de_fabricacion = [217, 772, data.get("ano_de_fabricacion")]
         self.serial_niv = data.get("serial_niv")
         self.ano_modelo = data.get("ano_modelo")
         self.serial_chasis = data.get("serial_chasis")
@@ -57,7 +58,7 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     
     c.drawString(wu * content.nombre_de_la_empresa[0], hu * content.nombre_de_la_empresa[1], content.nombre_de_la_empresa[2])
     c.drawString(wu * content.fecha_de_emision[0], hu * content.fecha_de_emision[1], content.fecha_de_emision[2])
-    c.drawString(wu * content.serie_de_numero_de_factura_1[0], hu * content.serie_de_numero_de_factura_1[1], content.serie_de_numero_de_factura_1[2] + " " + content.numero_de_factura_1 + " / " + content.fecha_de_factura_1)
+    c.drawString(wu * content.serie_de_numero_de_factura_1[0], hu * content.serie_de_numero_de_factura_1[1], content.serie_de_numero_de_factura_1[2] + " " + content.numero_de_factura_1 + " / " + content.fecha_de_factura_1[0:3] + "-" + content.fecha_de_factura_1[4:5] + "-" + content.fecha_de_factura_1[6:7])
           
     c.drawString(wu * content.uso[0], hu * content.uso[1], content.uso[2])
 
