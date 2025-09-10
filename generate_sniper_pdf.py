@@ -9,11 +9,10 @@ class VehicleRegistrationCertificate:
         x0 = 134
         x1 = 217
         x2 = 300
-        # x3 = 535
         x3 = 587
         x4 = 777  
-        y = 857
-        y_reduction = 20.4
+        y = 856
+        y_reduction = 20.45
         
         y -= y_reduction
         self.nombre_de_la_empresa = [x2, y, data.get("nombre_de_la_empresa")]
