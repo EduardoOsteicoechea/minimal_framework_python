@@ -10,58 +10,60 @@ class VehicleRegistrationCertificate:
         x1 = 217
         x2 = 300
         x3 = 535
-        x4 = 777
+        x4 = 777  
+        y = 836
+        y_reduction = 20
         
-        y = 816        
+        y -= y_reduction        
         self.fecha_de_emision = [x1, y, data.get("fecha_de_emision")]
         self.serie_de_numero_de_factura_1 = [x3, y, data.get("serie_de_numero_de_factura_1")]
         self.numero_de_factura_1 = data.get("numero_de_factura_1")
         self.fecha_de_factura_1 = data.get("fecha_de_factura_1")
         
-        y -= 21
+        y -= y_reduction
         self.placa = [134, y, data.get("placa")]        
         self.marca = [x2, y, data.get("marca")]        
         self.modelo = [x4, y, data.get("modelo")]
         
-        y -= 21
+        y -= y_reduction
         self.ano_de_fabricacion = [x1, y, data.get("ano_de_fabricacion")]
         self.serial_niv = [x3, y, data.get("serial_niv")]
         
-        y -= 21
+        y -= y_reduction
         self.ano_modelo = [x1, y, data.get("ano_modelo")]
         self.serial_chasis = [x3, y, data.get("serial_chasis")]
         
-        y -= 21
+        y -= y_reduction
         self.serial_motor = [x1, y, data.get("serial_motor")]
         self.serial_carrocería = [x3, y, data.get("serial_carrocería")]
         
-        y -= 21
+        y -= y_reduction
         self.clase = [x1, y, data.get("clase")]
         self.tipo = [430, y, data.get("tipo")]
         self.uso = [x4, y, data.get("uso")]
         
-        y -= 21
+        y -= y_reduction
         self.servicio = [x1, y, data.get("servicio")]
         self.color_pr = [x3, y, data.get("color_pr")]
         self.color_sec = [x4, y, data.get("color_sec")]
         
-        y -= 21
+        y -= y_reduction
         self.n_puestos = [x1, y, data.get("n_puestos")]
         self.n_ejes = [370, y, data.get("n_ejes")]
         self.peso_tara = [x3, y, data.get("peso_tara")]
         self.cap_de_carga = [x4, y, data.get("cap_de_carga")]
         
-        y -= 21
+        y -= y_reduction
         self.puerto_de_entrada = [x1, y, data.get("puerto_de_entrada")]        
         self.planilla_liq_grv_n = [587, y, data.get("planilla_liq_grv_n")]
         self.planilla_liq_grv_fecha = data.get("planilla_liq_grv_fecha")
         
-        y -= 21
+        y -= y_reduction
         self.factura_de_adquisicion_n = [x2, y, data.get("factura_de_adquisicion_n")]
         self.factura_de_adquisicion_fecha = data.get("factura_de_adquisicion_fecha")
         self.refeciv = [x4, y, data.get("refeciv")]       
         
-        y -= 21
+        y -= y_reduction
         self.homologacion_n = [x2, y, data.get("homologacion_n")]
         self.homologacion_fecha = data.get("homologacion_fecha")
         self.fecha_fin_convenio = [x4, y, data.get("fecha_fin_convenio")]
@@ -71,7 +73,7 @@ class VehicleRegistrationCertificate:
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica", 9)
+    c.setFont("Helvetica", 7)
 
     page_width, page_height = letter
     wu = page_width / 1000
