@@ -5,7 +5,7 @@ from reportlab.lib.pagesizes import letter
 
 class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
-        self.nombre_de_la_empresa = data.get("nombre_de_la_empresa")
+        self.nombre_de_la_empresa = [235, 834.5, data.get("nombre_de_la_empresa")]
         self.fecha_de_emision = data.get("fecha_de_emision")
         self.serie_de_numero_de_factura_1 = data.get("serie_de_numero_de_factura_1")
         self.numero_de_factura_1 = data.get("numero_de_factura_1")
@@ -22,7 +22,7 @@ class VehicleRegistrationCertificate:
         self.serial_carrocería = data.get("serial_carrocería")
         self.clase = data.get("clase")
         self.tipo = data.get("tipo")
-        self.uso = data.get("uso")
+        self.uso = [695, 713, data.get("uso")]
         self.servicio = data.get("servicio")
         self.color_pr = data.get("color_pr")
         self.color_sec = data.get("color_sec")
@@ -47,14 +47,14 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     c = canvas.Canvas(buffer, pagesize=letter)
 
     page_width, page_height = letter
-    wu = page_width / 100
-    hu = page_height / 100
+    wu = page_width / 1000
+    hu = page_height / 1000
     
     data = json.loads(decoded_body)    
     content = VehicleRegistrationCertificate(data)
     
-    c.drawString(wu*23.5, hu*83.4, content.nombre_de_la_empresa)    
-    c.drawString(wu*69.5, hu*71.35, content.uso)
+    c.drawString(wu * content.nombre_de_la_empresa[0], hu * content.nombre_de_la_empresa[1], content.nombre_de_la_empresa[2])    
+    c.drawString(wu * content.uso[0], hu * content.uso[1], content.uso[2])
 
     c.save()
     buffer.seek(0)
