@@ -58,8 +58,12 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     
     c.drawString(wu * content.nombre_de_la_empresa[0], hu * content.nombre_de_la_empresa[1], content.nombre_de_la_empresa[2])
     c.drawString(wu * content.fecha_de_emision[0], hu * content.fecha_de_emision[1], content.fecha_de_emision[2])
-    c.drawString(wu * content.serie_de_numero_de_factura_1[0], hu * content.serie_de_numero_de_factura_1[1], content.serie_de_numero_de_factura_1[2] + " " + content.numero_de_factura_1 + " / " + content.fecha_de_factura_1[0:3] + "-" + content.fecha_de_factura_1[4:5] + "-" + content.fecha_de_factura_1[6:7])
-          
+    c.drawString(wu * content.serie_de_numero_de_factura_1[0], hu * content.serie_de_numero_de_factura_1[1], content.serie_de_numero_de_factura_1[2] + " " + content.numero_de_factura_1 + " / " + content.fecha_de_factura_1[0:4] + "-" + content.fecha_de_factura_1[4:6] + "-" + content.fecha_de_factura_1[6:8])
+        
+    c.drawString(wu * content.placa[0], hu * content.placa[1], content.placa[2])
+    c.drawString(wu * content.marca[0], hu * content.marca[1], content.marca[2])
+    c.drawString(wu * content.modelo[0], hu * content.modelo[1], content.modelo[2])
+    
     c.drawString(wu * content.uso[0], hu * content.uso[1], content.uso[2])
 
     c.save()
