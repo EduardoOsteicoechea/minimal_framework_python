@@ -8,6 +8,7 @@ class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
         self.nombre_de_la_empresa = [235, 834, data.get("nombre_de_la_empresa")]
         
+        x0 = 134
         x1 = 217
         x2 = 300
         x3 = 535
@@ -22,7 +23,7 @@ class VehicleRegistrationCertificate:
         self.fecha_de_factura_1 = data.get("fecha_de_factura_1")
         
         y -= y_reduction
-        self.placa = [134, y, data.get("placa")]        
+        self.placa = [x0, y, data.get("placa")]        
         self.marca = [x2, y, data.get("marca")]        
         self.modelo = [x4, y, data.get("modelo")]
         
