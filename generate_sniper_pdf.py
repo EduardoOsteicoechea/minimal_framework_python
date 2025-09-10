@@ -7,57 +7,71 @@ class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
         self.nombre_de_la_empresa = [235, 834, data.get("nombre_de_la_empresa")]
         
-        # self.fecha_de_emision = [188, 813, data.get("fecha_de_emision")]
-        self.fecha_de_emision = [217, 813, data.get("fecha_de_emision")]
-        self.serie_de_numero_de_factura_1 = [535, 813, data.get("serie_de_numero_de_factura_1")]
+        x1 = 217
+        x2 = 300
+        x3 = 535
+        x4 = 777
+        
+        y = 816        
+        self.fecha_de_emision = [x1, y, data.get("fecha_de_emision")]
+        self.serie_de_numero_de_factura_1 = [x3, y, data.get("serie_de_numero_de_factura_1")]
         self.numero_de_factura_1 = data.get("numero_de_factura_1")
         self.fecha_de_factura_1 = data.get("fecha_de_factura_1")
         
-        self.placa = [134, 793, data.get("placa")]        
-        self.marca = [300, 793, data.get("marca")]        
-        self.modelo = [777, 793, data.get("modelo")]
-        # self.modelo = [677, 793, data.get("modelo")]
+        y -= 21
+        self.placa = [134, y, data.get("placa")]        
+        self.marca = [x2, y, data.get("marca")]        
+        self.modelo = [x4, y, data.get("modelo")]
         
-        self.ano_de_fabricacion = [217, 772, data.get("ano_de_fabricacion")]
-        self.serial_niv = [535, 772, data.get("serial_niv")]
+        y -= 21
+        self.ano_de_fabricacion = [x1, y, data.get("ano_de_fabricacion")]
+        self.serial_niv = [x3, y, data.get("serial_niv")]
         
-        self.ano_modelo = [217, 752, data.get("ano_modelo")]
-        self.serial_chasis = [535, 752, data.get("serial_chasis")]
+        y -= 21
+        self.ano_modelo = [x1, y, data.get("ano_modelo")]
+        self.serial_chasis = [x3, y, data.get("serial_chasis")]
         
-        self.serial_motor = [217, 732, data.get("serial_motor")]
-        self.serial_carrocería = [535, 732, data.get("serial_carrocería")]
+        y -= 21
+        self.serial_motor = [x1, y, data.get("serial_motor")]
+        self.serial_carrocería = [x3, y, data.get("serial_carrocería")]
         
-        self.clase = [217, 711, data.get("clase")]
-        self.tipo = [430, 711, data.get("tipo")]
-        self.uso = [777, 711, data.get("uso")]
+        y -= 21
+        self.clase = [x1, y, data.get("clase")]
+        self.tipo = [430, y, data.get("tipo")]
+        self.uso = [x4, y, data.get("uso")]
         
-        self.servicio = [217, 690, data.get("servicio")]
-        self.color_pr = [535, 690, data.get("color_pr")]
-        self.color_sec = [777, 690, data.get("color_sec")]
+        y -= 21
+        self.servicio = [x1, y, data.get("servicio")]
+        self.color_pr = [x3, y, data.get("color_pr")]
+        self.color_sec = [x4, y, data.get("color_sec")]
         
-        self.n_puestos = [217, 669, data.get("n_puestos")]
-        self.n_ejes = [370, 669, data.get("n_ejes")]
-        self.peso_tara = [535, 000, data.get("peso_tara")]
-        self.cap_de_carga = [777, 669, data.get("cap_de_carga")]
+        y -= 21
+        self.n_puestos = [x1, y, data.get("n_puestos")]
+        self.n_ejes = [370, y, data.get("n_ejes")]
+        self.peso_tara = [x3, y, data.get("peso_tara")]
+        self.cap_de_carga = [x4, y, data.get("cap_de_carga")]
         
-        self.puerto_de_entrada = [217, 648, data.get("puerto_de_entrada")]        
-        self.planilla_liq_grv_n = [587, 648, data.get("planilla_liq_grv_n")]
-        self.planilla_liq_grv_fecha = [0, 627, data.get("planilla_liq_grv_fecha")]
+        y -= 21
+        self.puerto_de_entrada = [x1, y, data.get("puerto_de_entrada")]        
+        self.planilla_liq_grv_n = [587, y, data.get("planilla_liq_grv_n")]
+        self.planilla_liq_grv_fecha = data.get("planilla_liq_grv_fecha")
         
-        self.factura_de_adquisicion_n = [300, 627, data.get("factura_de_adquisicion_n")]
-        self.factura_de_adquisicion_fecha = [0, 627, data.get("factura_de_adquisicion_fecha")]
-        self.refeciv = [777, 627, data.get("refeciv")]
+        y -= 21
+        self.factura_de_adquisicion_n = [x2, y, data.get("factura_de_adquisicion_n")]
+        self.factura_de_adquisicion_fecha = data.get("factura_de_adquisicion_fecha")
+        self.refeciv = [x4, y, data.get("refeciv")]       
         
-        self.homologacion_n = [300, 606, data.get("homologacion_n")]
-        self.homologacion_fecha = [0, 606, data.get("homologacion_fecha")]
-        self.fecha_fin_convenio = [777, 606, data.get("fecha_fin_convenio")]
+        y -= 21
+        self.homologacion_n = [x2, y, data.get("homologacion_n")]
+        self.homologacion_fecha = data.get("homologacion_fecha")
+        self.fecha_fin_convenio = [x4, y, data.get("fecha_fin_convenio")]
                 
         self.fields = list(vars(self).items())
 
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica", 11)
+    c.setFont("Helvetica", 9)
 
     page_width, page_height = letter
     wu = page_width / 1000
@@ -97,12 +111,12 @@ def generate_sniper_pdf(decoded_body: str) -> bytes:
     c.drawString(wu * content.cap_de_carga[0], hu * content.cap_de_carga[1], content.cap_de_carga[2])
 
     c.drawString(wu * content.puerto_de_entrada[0], hu * content.puerto_de_entrada[1], content.puerto_de_entrada[2])
-    c.drawString(wu * content.planilla_liq_grv_n[0], hu * content.planilla_liq_grv_n[1], content.planilla_liq_grv_n[2] +  " " + content.planilla_liq_grv_fecha[2])
+    c.drawString(wu * content.planilla_liq_grv_n[0], hu * content.planilla_liq_grv_n[1], content.planilla_liq_grv_n[2] +  " " + content.planilla_liq_grv_fecha)
 
-    c.drawString(wu * content.factura_de_adquisicion_n[0], hu * content.factura_de_adquisicion_n[1], content.factura_de_adquisicion_n[2] + " " + content.factura_de_adquisicion_fecha[2])
+    c.drawString(wu * content.factura_de_adquisicion_n[0], hu * content.factura_de_adquisicion_n[1], content.factura_de_adquisicion_n[2] + " " + content.factura_de_adquisicion_fecha)
     c.drawString(wu * content.refeciv[0], hu * content.refeciv[1], content.refeciv[2])
     
-    c.drawString(wu * content.homologacion_n[0], hu * content.homologacion_n[1], content.homologacion_n[2] + " " + content.homologacion_fecha[2])
+    c.drawString(wu * content.homologacion_n[0], hu * content.homologacion_n[1], content.homologacion_n[2] + " " + content.homologacion_fecha)
     c.drawString(wu * content.fecha_fin_convenio[0], hu * content.fecha_fin_convenio[1], content.fecha_fin_convenio[2])
 
 
