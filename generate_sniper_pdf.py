@@ -11,7 +11,7 @@ class VehicleRegistrationCertificate:
         x2 = 300
         x3 = 587
         x4 = 777  
-        y = 856
+        y = 855
         y_reduction = 20.45
         
         y -= y_reduction
