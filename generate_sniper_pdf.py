@@ -75,8 +75,8 @@ HIGH_RES_LETTER = (8.5 * inch * 4.1666, 11 * inch * 4.1666) # Scales 72 DPI to 3
 
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
-    c = canvas.Canvas(buffer, pagesize=HIGH_RES_LETTER)
-    # c = canvas.Canvas(buffer, pagesize=letter)
+    # c = canvas.Canvas(buffer, pagesize=HIGH_RES_LETTER)
+    c = canvas.Canvas(buffer, pagesize=letter)
     c.setFont("Helvetica-Bold", 8)
 
     page_width, page_height = letter
