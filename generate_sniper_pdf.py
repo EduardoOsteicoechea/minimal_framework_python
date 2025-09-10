@@ -2,6 +2,7 @@ import json
 from io import BytesIO
 from reportlab.pdfgen import canvas
 from reportlab.lib.pagesizes import letter
+from reportlab.lib.units import inch
 
 class VehicleRegistrationCertificate:
     def __init__(self, data: dict):
@@ -69,11 +70,14 @@ class VehicleRegistrationCertificate:
         self.fecha_fin_convenio = [x4, y, data.get("fecha_fin_convenio")]
                 
         self.fields = list(vars(self).items())
+        
+HIGH_RES_LETTER = (8.5 * inch * 4.1666, 11 * inch * 4.1666) # Scales 72 DPI to 300 DPI (300/72=4.1666)
 
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
-    c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica-Bold", 7)
+    c = canvas.Canvas(buffer, pagesize=HIGH_RES_LETTER)
+    # c = canvas.Canvas(buffer, pagesize=letter)
+    c.setFont("Helvetica-Bold", 8)
 
     page_width, page_height = letter
     wu = page_width / 1000
