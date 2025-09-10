@@ -11,7 +11,8 @@ class VehicleRegistrationCertificate:
         x0 = 134
         x1 = 217
         x2 = 300
-        x3 = 535
+        # x3 = 535
+        x3 = 587
         x4 = 777  
         y = 836
         y_reduction = 21
@@ -57,7 +58,7 @@ class VehicleRegistrationCertificate:
         
         y -= y_reduction
         self.puerto_de_entrada = [x1, y, data.get("puerto_de_entrada")]        
-        self.planilla_liq_grv_n = [587, y, data.get("planilla_liq_grv_n")]
+        self.planilla_liq_grv_n = [x3, y, data.get("planilla_liq_grv_n")]
         self.planilla_liq_grv_fecha = data.get("planilla_liq_grv_fecha")
         
         y -= y_reduction
