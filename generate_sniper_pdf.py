@@ -73,7 +73,7 @@ class VehicleRegistrationCertificate:
 def generate_sniper_pdf(decoded_body: str) -> bytes:
     buffer = BytesIO()
     c = canvas.Canvas(buffer, pagesize=letter)
-    c.setFont("Helvetica", 7)
+    c.setFont("Helvetica-Bold", 7)
 
     page_width, page_height = letter
     wu = page_width / 1000
