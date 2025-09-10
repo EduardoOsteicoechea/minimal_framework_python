@@ -13,7 +13,7 @@ class VehicleRegistrationCertificate:
         x3 = 535
         x4 = 777  
         y = 836
-        y_reduction = 20
+        y_reduction = 21
         
         y -= y_reduction        
         self.fecha_de_emision = [x1, y, data.get("fecha_de_emision")]
