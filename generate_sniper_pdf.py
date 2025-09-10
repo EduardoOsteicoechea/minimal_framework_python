@@ -8,11 +8,11 @@ class VehicleRegistrationCertificate:
         self.nombre_de_la_empresa = [235, 834.5, data.get("nombre_de_la_empresa")]
         
         self.fecha_de_emision = [188,813,data.get("fecha_de_emision")]
-        self.serie_de_numero_de_factura_1 = [5134,813, data.get("serie_de_numero_de_factura_1")]
+        self.serie_de_numero_de_factura_1 = [513,813, data.get("serie_de_numero_de_factura_1")]
         self.numero_de_factura_1 = data.get("numero_de_factura_1")
         self.fecha_de_factura_1 = data.get("fecha_de_factura_1")
         
-        self.placa = data.get("placa")
+        self.placa = [134,793,data.get("placa")]
         self.marca = data.get("marca")
         self.modelo = data.get("modelo")
         self.ano_de_fabricacion = data.get("ano_de_fabricacion")
