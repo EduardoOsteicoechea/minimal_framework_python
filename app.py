@@ -10,7 +10,7 @@ def application(environ, start_response):
     response_body = b'Path not found'
 
     try:
-        if path == '/api/sniper':
+        if path == '/api/certispot':
             if environ['REQUEST_METHOD'] == 'OPTIONS':
                 response_body = b''
             elif environ['REQUEST_METHOD'] == 'POST':
@@ -37,8 +37,8 @@ def application(environ, start_response):
             page = BasePage("Cánticos", ["article", "songs"], ["songs"], True, "data_file/orquesta_del_desierto.json")
             response_body = page.html().encode('utf-8')
             
-        elif path == '/sniper':
-            page = BasePage("Impresión Perfecta para tus Certificados", ["sniper_base"], ["sniper_base"], False, "data_file/sniper_base.json", "/api/sniper")
+        elif path == '/certispot':
+            page = BasePage("Impresión Perfecta para tus Certificados", ["sniper_base"], ["sniper_base"], False, "data_file/sniper_base.json", "/api/certispot")
             response_body = page.html().encode('utf-8')
         
         else:
