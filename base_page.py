@@ -20,12 +20,12 @@ class BasePage:
 
     def _generate_css_tags(self):
         if self.css:
-            return "".join([f'<link rel="stylesheet" href="{name}.css">' for name in self.css])
+            return "".join([f'<link rel="stylesheet" href="/{name}.css">' for name in self.css])
         return ""
 
     def _generate_js_tags(self):
         if self.js:
-            return "".join([f'<script type="module" src="{name}.js" defer></script>' for name in self.js])
+            return "".join([f'<script type="module" src="/{name}.js" defer></script>' for name in self.js])
         return ""
 
     def _generate_article_tag(self):
@@ -44,9 +44,9 @@ class BasePage:
             <meta charset="UTF-8">
             <meta name="viewport" content="width=device-width, initial-scale=1.0">
             <title>{self.title}</title>
-            <link rel="icon" type="image/x-icon" href="images/favicon.ico">
-            <link rel="stylesheet" href="global.css">
-            <script src="global.js" defer></script>
+            <link rel="icon" type="image/x-icon" href="/images/favicon.ico">
+            <link rel="stylesheet" href="/global.css">
+            <script src="/global.js" defer></script>
             {css_tags}
         </head>
         <body>
