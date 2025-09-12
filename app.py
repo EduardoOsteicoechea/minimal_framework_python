@@ -4,22 +4,23 @@ from generate_sniper_pdf import generate_sniper_pdf
 
 STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
     
-api_route =  "/api"
-data_files_route =  "data_file/"
+home_route =  "/"
+api_route =  f"{home_route}api"
+data_files_route =  f"{home_route}data_file/"
 
 generate_printing =  {
     "api_url":f"{api_route}/certispot/generar/impresion",
-    "page_url":"/certispot/generar/impresion",
+    "page_url":f"{home_route}certispot/generar/impresion",
     "page_title":"Impresión Perfecta para tus Certificados",
-    "ui_generator":"/certispot/generar/regristros",
+    "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
 }
 
 generate_registries = {
     "api_url":f"{api_route}/certispot/generar/regristros",
-    "page_url":"/certispot/generar/regristros",
+    "page_url":f"{home_route}certispot/generar/regristros",
     "page_title":"Genera Registros para importación de vehículos para el INTT",
-    "ui_generator":"/certispot/generar/regristros",
+    "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
 }
     
@@ -31,7 +32,7 @@ def application(environ, start_response):
         if path == api_route:
             response_body = b"Working"
         
-        elif path == '/':
+        elif path == home_route:
             page = BasePage("Eduardo Osteicoechea")
             response_body = page.html().encode('utf-8')
             
