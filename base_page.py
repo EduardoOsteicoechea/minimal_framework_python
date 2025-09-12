@@ -5,8 +5,8 @@ class BasePage:
         css: list = [], 
         js: list = [], 
         is_article: bool = False,
-        main_data_file_url = "data_file/sample.json",
-        main_api_endpoint = "api/"
+        main_data_file_url = "/data_file/sample.json",
+        main_api_endpoint = "/api/"
         ):
         self.title = title
         self.css = css
