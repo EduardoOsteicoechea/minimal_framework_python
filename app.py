@@ -20,7 +20,7 @@ generate_registries = {
     "page_url":"/certispot/generar/regristros",
     "page_title":"Genera Registros para importación de vehículos para el INTT",
     "ui_generator":"/certispot/generar/regristros",
-    "data_file":"f{data_files_route}sniper_base.json"
+    "data_file":f"{data_files_route}sniper_base.json"
 }
     
 def application(environ, start_response):
