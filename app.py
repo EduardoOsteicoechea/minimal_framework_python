@@ -15,13 +15,19 @@ generate_printing =  {
     "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
 }
-
 generate_registries = {
     "api_url":f"{api_route}/certispot/generar/regristros",
     "page_url":f"{home_route}certispot/generar/regristros",
     "page_title":"Genera Registros para importación de vehículos para el INTT",
     "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
+}
+article_series_responsabilism = {
+    "api_url":f"{api_route}/articles/series/responsabilism",
+    "page_url":f"{home_route}/articles/series/responsabilism",
+    "page_title":"En mis manos está - Libertad volitiva bajo la soberanía del Padre",
+    "ui_generator":f"{home_route}article_series",
+    "data_file":f"{data_files_route}responsabilism.json"
 }
     
 def application(environ, start_response):
@@ -34,19 +40,11 @@ def application(environ, start_response):
         
         elif path == home_route:
             page = BasePage("Eduardo Osteicoechea")
-            response_body = page.html().encode('utf-8')
+            response_body = page.html().encode('utf-8')     
             
-        elif path == generate_printing["api_url"]:
-            if environ['REQUEST_METHOD'] == 'OPTIONS':
-                response_body = b''
-            elif environ['REQUEST_METHOD'] == 'POST':
-                content_length = int(environ.get('CONTENT_LENGTH', 0))
-                request_body = environ['wsgi.input'].read(content_length)
-                decoded_body = request_body.decode('utf-8')
-                pdf_data = generate_sniper_pdf(decoded_body)
-                response_body = pdf_data
-            else:
-                response_body = b"This endpoint is ready to receive a POST request."        
+        elif path == article_series_responsabilism["page_url"]:
+            page = BasePage("Artículos", ["article"], ["article"], True, article_series_responsabilism["data_file"])
+            response_body = page.html().encode('utf-8')
             
         elif path == '/article':
             page = BasePage("Artículos", ["article"], ["article"], True, "data_file/un_dios_prudente.json")
@@ -55,7 +53,7 @@ def application(environ, start_response):
         elif path == '/songs':
             page = BasePage("Cánticos", ["article", "songs"], ["songs"], True, "data_file/orquesta_del_desierto.json")
             response_body = page.html().encode('utf-8')
-            
+                      
         elif path == generate_printing["page_url"]:
             page = BasePage(
                 generate_printing["page_title"], 
@@ -66,6 +64,17 @@ def application(environ, start_response):
                 generate_printing["api_url"]
             )
             response_body = page.html().encode('utf-8')
+        elif path == generate_printing["api_url"]:
+            if environ['REQUEST_METHOD'] == 'OPTIONS':
+                response_body = b''
+            elif environ['REQUEST_METHOD'] == 'POST':
+                content_length = int(environ.get('CONTENT_LENGTH', 0))
+                request_body = environ['wsgi.input'].read(content_length)
+                decoded_body = request_body.decode('utf-8')
+                pdf_data = generate_sniper_pdf(decoded_body)
+                response_body = pdf_data
+            else:
+                response_body = b"This endpoint is ready to receive a POST request."
             
         elif path == generate_registries["page_url"]:
             page = BasePage(
