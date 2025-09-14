@@ -25,7 +25,7 @@ generate_registries = {
 article_series_responsabilism = {
     "api_url":f"{api_route}articles/series/responsabilism",
     "page_url":f"{home_route}articles/series/responsabilism",
-    "page_title":"En mis manos está - Libertad volitiva bajo la soberanía del Padre",
+    "page_title":"En mis manos está - Libertad volitiva bajo Su soberanía",
     "ui_generator":f"{home_route}article_series",
     "data_file":f"{data_files_route}responsabilism.json"
 }
@@ -43,7 +43,7 @@ def application(environ, start_response):
             response_body = page.html().encode('utf-8')     
             
         elif path == article_series_responsabilism["page_url"]:
-            page = BasePage("Artículos", ["article"], ["article"], True, article_series_responsabilism["data_file"])
+            page = BasePage(article_series_responsabilism["page_title"], ["article"], ["article"], True, article_series_responsabilism["data_file"])
             response_body = page.html().encode('utf-8')
             
         elif path == '/article':
