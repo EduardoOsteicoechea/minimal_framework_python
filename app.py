@@ -43,8 +43,18 @@ def application(environ, start_response):
             response_body = page.html().encode('utf-8')     
             
         elif path == article_series_responsabilism["page_url"]:
-            page = BasePage(article_series_responsabilism["page_title"], ["article"], ["article"], True, article_series_responsabilism["data_file"])
-            response_body = page.html().encode('utf-8')
+            # page = BasePage(
+            #     article_series_responsabilism["page_title"], 
+            #     ["article"],["article"],True, 
+            #     article_series_responsabilism["data_file"],
+            #     article_series_responsabilism["api_url"]
+            # )
+            response_body = BasePage(
+                article_series_responsabilism["page_title"], 
+                ["article"],["article"],True, 
+                article_series_responsabilism["data_file"],
+                article_series_responsabilism["api_url"]
+            ).html().encode('utf-8')
             
         elif path == '/article':
             page = BasePage("Artículos", ["article"], ["article"], True, "data_file/un_dios_prudente.json")
