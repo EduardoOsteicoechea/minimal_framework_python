@@ -5,26 +5,26 @@ from generate_sniper_pdf import generate_sniper_pdf
 STATIC_DIR = os.path.join(os.path.dirname(__file__), 'static')
     
 home_route =  "/"
-api_route =  f"{home_route}api"
+api_route =  f"{home_route}api/"
 data_files_route =  f"{home_route}data_file/"
 
 generate_printing =  {
-    "api_url":f"{api_route}/certispot/generar/impresion",
+    "api_url":f"{api_route}certispot/generar/impresion",
     "page_url":f"{home_route}certispot/generar/impresion",
     "page_title":"Impresión Perfecta para tus Certificados",
     "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
 }
 generate_registries = {
-    "api_url":f"{api_route}/certispot/generar/regristros",
+    "api_url":f"{api_route}certispot/generar/regristros",
     "page_url":f"{home_route}certispot/generar/regristros",
     "page_title":"Genera Registros para importación de vehículos para el INTT",
     "ui_generator":f"{home_route}certispot/generar/regristros",
     "data_file":f"{data_files_route}sniper_base.json"
 }
 article_series_responsabilism = {
-    "api_url":f"{api_route}/articles/series/responsabilism",
-    "page_url":f"{home_route}/articles/series/responsabilism",
+    "api_url":f"{api_route}articles/series/responsabilism",
+    "page_url":f"{home_route}articles/series/responsabilism",
     "page_title":"En mis manos está - Libertad volitiva bajo la soberanía del Padre",
     "ui_generator":f"{home_route}article_series",
     "data_file":f"{data_files_route}responsabilism.json"
