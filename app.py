@@ -51,7 +51,7 @@ def application(environ, start_response):
             # )
             response_body = BasePage(
                 article_series_responsabilism["page_title"], 
-                ["article"],["article"],True, 
+                ["article"],["article"],False, 
                 article_series_responsabilism["data_file"],
                 article_series_responsabilism["api_url"]
             ).html().encode('utf-8')
